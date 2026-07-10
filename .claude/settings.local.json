@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:preview.themeforest.net)",
+      "WebSearch"
+    ]
+  }
+}

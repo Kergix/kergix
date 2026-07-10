@@ -7,7 +7,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://kergix.com";
 
   // 1. Static Routes definitions
-  const staticPaths = ["", "/about", "/services", "/portfolio", "/industries", "/pricing", "/testimonials", "/faq", "/contact"];
+  const staticPaths = ["", "/about", "/services", "/portfolio", "/industries", "/testimonials", "/faq", "/contact"];
   const staticEntries = staticPaths.map((path) => ({
     url: `${baseUrl}${path}`,
     lastModified: new Date(),

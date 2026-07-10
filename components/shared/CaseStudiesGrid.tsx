@@ -18,16 +18,21 @@ export default function CaseStudiesGrid({ limit }: CaseStudiesGridProps) {
 
   const categories = ["All", ...Array.from(new Set(portfolio.map((p) => p.category)))];
 
-  const filteredProjects = isTeaser
-    ? portfolio.slice(0, limit)
-    : selectedFilter === "All"
-    ? portfolio
-    : portfolio.filter((p) => p.category === selectedFilter);
+  const filteredProjects = React.useMemo(() => {
+    return isTeaser
+      ? portfolio.slice(0, limit)
+      : selectedFilter === "All"
+      ? portfolio
+      : portfolio.filter((p) => p.category === selectedFilter);
+  }, [isTeaser, limit, selectedFilter]);
 
   const totalPages = Math.ceil(filteredProjects.length / itemsPerPage);
-  const paginatedProjects = isTeaser
-    ? filteredProjects
-    : filteredProjects.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
+  
+  const paginatedProjects = React.useMemo(() => {
+    return isTeaser
+      ? filteredProjects
+      : filteredProjects.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
+  }, [isTeaser, filteredProjects, currentPage]);
 
   const handleFilterChange = (category: string) => {
     setSelectedFilter(category);

@@ -24,8 +24,8 @@
   --color-warning: #F5C542;
   --color-danger: #F5546A;
 
-  --color-border-subtle: rgba(0, 210, 240, 0.12);
-  --color-border-strong: rgba(0, 210, 240, 0.3);
+  --color-border-subtle: rgba(255, 255, 255, 0.08);
+  --color-border-strong: rgba(255, 255, 255, 0.15);
 
   /* ── Fonts ── */
   --font-heading: var(--font-space-grotesk), sans-serif;
@@ -118,10 +118,11 @@ body {
     rgba(0, 210, 240, 0.12) 0%,
     rgba(0, 130, 170, 0.06) 35%,
     rgba(0, 210, 240, 0.02) 55%,
-    transparent 75%
   );
   z-index: 0;
   pointer-events: none;
+  transform: translateZ(0); /* Hardware acceleration for fixed paints */
+  will-change: transform;
 }
 
 /* Bottom‑left corner glow */
@@ -138,10 +139,11 @@ body {
     rgba(0, 130, 170, 0.10) 0%,
     rgba(0, 210, 240, 0.05) 40%,
     rgba(0, 210, 240, 0.015) 60%,
-    transparent 80%
   );
   z-index: 0;
   pointer-events: none;
+  transform: translateZ(0);
+  will-change: transform;
 }
 
 /* Footer area glow (reference shows warm glow bleeding up from bottom edge) */
@@ -155,10 +157,9 @@ body {
   max-height: 500px;
   background: radial-gradient(
     ellipse at 70% 100%,
-    rgba(0, 210, 240, 0.10) 0%,
-    rgba(0, 130, 170, 0.06) 30%,
-    rgba(0, 210, 240, 0.02) 55%,
-    transparent 75%
+    rgba(255, 255, 255, 0.03) 0%,
+    rgba(255, 255, 255, 0.01) 50%,
+    transparent 70%
   );
   z-index: 0;
   pointer-events: none;
@@ -166,45 +167,47 @@ body {
 
 /* ── Glassmorphism ── */
 .glass-panel {
-  background: rgba(16, 21, 28, 0.6);
+  background: rgba(10, 10, 10, 0.6);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(0, 210, 240, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transform: translateZ(0); /* Force GPU acceleration */
+  will-change: transform, backdrop-filter;
 }
 .glass-panel:hover {
-  border-color: rgba(0, 210, 240, 0.25);
-  box-shadow: 0 0 30px rgba(0, 210, 240, 0.06);
+  border-color: rgba(255, 255, 255, 0.18);
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.02);
 }
 
 /* ── Elevated dark card (used in CTA section, service rows) ── */
 .dark-card {
-  background: linear-gradient(145deg, #0B0F14 0%, #10151C 100%);
-  border: 1px solid rgba(0, 210, 240, 0.10);
+  background: linear-gradient(145deg, #050505 0%, #0a0a0a 100%);
+  border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 16px;
 }
 
-/* ── Section divider (thin cyan gradient line) ── */
+/* ── Section divider (thin silver gradient line) ── */
 .section-divider {
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(0, 210, 240, 0.2), transparent);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
 }
 
 /* ── Gradient text utility ── */
 .gradient-text {
-  background: linear-gradient(135deg, #00E6FA 0%, #00D2F0 45%, #0082AA 100%);
+  background: linear-gradient(135deg, #ffffff 0%, #a3a3a3 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* ── Cyan dot bullet (for service capability bullet points) ── */
+/* ── Silver dot bullet ── */
 .cyan-bullet::before {
   content: "";
   display: inline-block;
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #00D2F0;
+  background: #a3a3a3;
   margin-right: 12px;
   flex-shrink: 0;
 }

@@ -10,11 +10,31 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Verify webhook secret
+        run: |
+          if [ -z "${{ secrets.DISCORD_WEBHOOK }}" ]; then
+            echo "❌ DISCORD_WEBHOOK secret is EMPTY or unavailable."
+            exit 1
+          else
+            echo "✅ DISCORD_WEBHOOK secret exists."
+          fi
+
       - name: Send Discord Notification
         run: |
-          curl -H "Content-Type: application/json" \
-          -X POST \
-          -d "{
-            \"content\": \"🚀 **New Push**\n\n📦 Repository: ${{ github.repository }}\n👤 Author: ${{ github.actor }}\n🌿 Branch: ${{ github.ref_name }}\n📝 Commit: ${{ github.event.head_commit.message }}\n🔗 https://github.com/${{ github.repository }}/commit/${{ github.sha }}\"
-          }" \
-          "${{ secrets.DISCORD_WEBHOOK }}"
+          RESPONSE=$(curl -s -o /tmp/response.txt -w "%{http_code}" \
+            -H "Content-Type: application/json" \
+            -X POST \
+            -d '{
+              "content": "🚀 **New Push**\n\n📦 Repository: ${{ github.repository }}\n👤 Author: ${{ github.actor }}\n🌿 Branch: ${{ github.ref_name }}\n📝 Commit: ${{ github.event.head_commit.message }}\n🔗 https://github.com/${{ github.repository }}/commit/${{ github.sha }}"
+            }' \
+            "${{ secrets.DISCORD_WEBHOOK }}")
+
+          echo "HTTP Status: $RESPONSE"
+          cat /tmp/response.txt
+
+          if [ "$RESPONSE" != "204" ]; then
+            echo "❌ Discord webhook failed."
+            exit 1
+          else
+            echo "✅ Discord notification sent successfully."
+          fi

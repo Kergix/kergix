@@ -8,6 +8,7 @@ import ServiceCapabilityList from "@/components/shared/ServiceCapabilityList";
 import BuildingWithBestTools from "@/components/shared/BuildingWithBestTools";
 import CaseStudiesGrid from "@/components/shared/CaseStudiesGrid";
 import CTAFormSection from "@/components/shared/CTAFormSection";
+import ServiceDetailsPaginated from "@/components/home/ServiceDetailsPaginated";
 
 export default function ServicesPage() {
   const phases = [
@@ -117,6 +118,9 @@ export default function ServicesPage() {
 
       {/* 3. Our Approach Section */}
       <OurApproachSection />
+
+      {/* 3b. Paginated module deep-dive viewer */}
+      <ServiceDetailsPaginated className="border-b border-border-subtle" />
 
       {/* 4. Service Capability List */}
       <section className="py-24 px-4 md:px-8 bg-bg-secondary/20 relative overflow-hidden border-b border-border-subtle">

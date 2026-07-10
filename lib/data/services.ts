@@ -226,15 +226,141 @@ export interface ServiceModule {
   title: string;
   shortDescription: string;
   icon: 'Globe' | 'Code2' | 'Layout' | 'BrainCircuit' | 'TrendingUp' | 'Cloud' | 'Users' | 'ShieldCheck';
+  /** 2–3 paragraph deep-dive narrative shown in the paginated detail viewer. */
+  fullDescription: string;
+  /** 3–4 headline capabilities rendered as a checklist. */
+  keyFeatures: string[];
+  /** The primary tangible outcome the client walks away with. */
+  deliverable: string;
 }
 
 export const serviceModules: ServiceModule[] = [
-  { id: 'web-dev', slug: 'website-development', title: 'Website Development', shortDescription: 'Fast, scalable, custom-built websites engineered for growth.', icon: 'Globe' },
-  { id: 'software-dev', slug: 'software-development', title: 'Software Development', shortDescription: 'Bespoke software built around your exact business logic.', icon: 'Code2' },
-  { id: 'wordpress-dev', slug: 'wordpress-development', title: 'WordPress Development', shortDescription: 'Secure, high-performance WordPress builds and migrations.', icon: 'Layout' },
-  { id: 'ai', slug: 'artificial-intelligence', title: 'Artificial Intelligence', shortDescription: 'AI-powered automation and intelligent product features.', icon: 'BrainCircuit' },
-  { id: 'seo', slug: 'seo-optimization', title: 'SEO Optimization', shortDescription: 'Technical and on-page SEO built to rank and convert.', icon: 'TrendingUp' },
-  { id: 'cloud', slug: 'cloud-solutions', title: 'Cloud Solutions', shortDescription: 'Scalable, secure cloud infrastructure and DevOps.', icon: 'Cloud' },
-  { id: 'it-consulting', slug: 'it-consulting', title: 'IT Consulting', shortDescription: 'Strategic technology guidance to de-risk every decision.', icon: 'Users' },
-  { id: 'cybersecurity', slug: 'cybersecurity-solutions', title: 'Cybersecurity Solutions', shortDescription: 'Proactive security audits, hardening, and monitoring.', icon: 'ShieldCheck' },
+  {
+    id: 'web-dev',
+    slug: 'website-development',
+    title: 'Website Development',
+    shortDescription: 'Fast, scalable, custom-built websites engineered for growth.',
+    icon: 'Globe',
+    fullDescription:
+      'We architect high-performance websites that load instantly, rank effortlessly, and convert visitors into customers. Built on modern frameworks like Next.js and React, every project is engineered for perfect Core Web Vitals, semantic SEO, and pixel-precise responsive behaviour across every device.\n\nFrom conversion-focused landing pages to complex corporate platforms, we treat the frontend as a product — not a template. Clean component architecture, thoughtful micro-interactions, and an obsessive attention to load performance produce experiences that feel effortless to your users and maintainable for your team.\n\nThe result is a web presence that grows with your business, scales under traffic spikes without flinching, and gives your brand the polish it deserves.',
+    keyFeatures: [
+      'Custom React & Next.js engineering',
+      'Perfect Core Web Vitals & Lighthouse scores',
+      'Mobile-first responsive design systems',
+      'Headless CMS & Jamstack architecture',
+    ],
+    deliverable: 'Production-Ready Website',
+  },
+  {
+    id: 'software-dev',
+    slug: 'software-development',
+    title: 'Software Development',
+    shortDescription: 'Bespoke software built around your exact business logic.',
+    icon: 'Code2',
+    fullDescription:
+      'We design and build bespoke software that automates workflows, eliminates manual overhead, and solves the problems off-the-shelf tools cannot. Our senior engineers craft robust architectures with TypeScript, Node.js, and battle-tested database patterns built for reliability and scale.\n\nWhether you need a SaaS platform, an internal operations portal, or a customer-facing dashboard, we design clean API contracts, model data with intention, and ship features iteratively so you see progress every week rather than every quarter.\n\nSecurity, maintainability, and clean code principles sit at the core of everything we deliver, ensuring the system you launch today remains an asset — not a liability — years from now.',
+    keyFeatures: [
+      'Custom SaaS & web application engineering',
+      'REST & GraphQL API architecture',
+      'Automated CI/CD pipelines & testing',
+      'Scalable database modelling & tuning',
+    ],
+    deliverable: 'Custom Web Application',
+  },
+  {
+    id: 'wordpress-dev',
+    slug: 'wordpress-development',
+    title: 'WordPress Development',
+    shortDescription: 'Secure, high-performance WordPress builds and migrations.',
+    icon: 'Layout',
+    fullDescription:
+      'We engineer WordPress solutions that escape template bloat entirely. By building bespoke Gutenberg blocks, lightweight custom themes, and tailor-made plugins, we combine the familiar editing experience your team loves with the performance and security standards of a modern custom application.\n\nOur builds strip away unnecessary assets, harden the core against common vulnerabilities, and load only what each page truly needs — delivering the speed of a static site with the flexibility of a full CMS.\n\nFor commerce, we build secure, high-traffic WooCommerce stores that integrate cleanly with your payment, tax, and fulfilment systems, giving you an editor-friendly platform without compromise.',
+    keyFeatures: [
+      'Bespoke Gutenberg block development',
+      'Lightweight, asset-optimised custom themes',
+      'WooCommerce store engineering & scaling',
+      'Security hardening & core auditing',
+    ],
+    deliverable: 'Custom WordPress Platform',
+  },
+  {
+    id: 'ai',
+    slug: 'artificial-intelligence',
+    title: 'Artificial Intelligence',
+    shortDescription: 'AI-powered automation and intelligent product features.',
+    icon: 'BrainCircuit',
+    fullDescription:
+      'We bring generative AI and machine learning out of the lab and into your day-to-day operations. Using modern LLM APIs, vector databases, and retrieval-augmented generation, we build intelligent features that understand your data and respond with genuine context.\n\nFrom conversational support agents and semantic document search to automated classification and routing pipelines, we bridge the gap between AI capability and real business utility — always with guardrails, evaluation, and cost discipline built in.\n\nEvery integration is benchmarked for accuracy, latency, and token efficiency, so you get intelligent automation that is reliable in production and sustainable at scale.',
+    keyFeatures: [
+      'RAG & semantic search pipelines',
+      'Custom LLM & chatbot integrations',
+      'Automated classification & routing',
+      'Prompt engineering & cost optimisation',
+    ],
+    deliverable: 'Deployed AI Integration',
+  },
+  {
+    id: 'seo',
+    slug: 'seo-optimization',
+    title: 'SEO Optimization',
+    shortDescription: 'Technical and on-page SEO built to rank and convert.',
+    icon: 'TrendingUp',
+    fullDescription:
+      'Organic search is the highest-value channel you can own, and we make sure search engines understand your platform perfectly. Our technical SEO service audits site architecture, resolves indexation issues, and configures advanced structured data so your pages earn richer, higher-ranking results.\n\nWe go beyond audits — optimising Core Web Vitals, engineering semantic HTML, and structuring content around genuine search intent to capture the queries that actually convert.\n\nThe outcome is durable search equity: rankings that hold through redesigns, clean canonical structures, and a measurable lift in the qualified organic traffic that drives your pipeline.',
+    keyFeatures: [
+      'Deep technical & crawl audits',
+      'JSON-LD structured data & rich snippets',
+      'Core Web Vitals performance tuning',
+      'Keyword & search-intent research',
+    ],
+    deliverable: 'SEO Strategy & Audit',
+  },
+  {
+    id: 'cloud',
+    slug: 'cloud-solutions',
+    title: 'Cloud Solutions',
+    shortDescription: 'Scalable, secure cloud infrastructure and DevOps.',
+    icon: 'Cloud',
+    fullDescription:
+      'We build reliable cloud architectures that handle millions of requests without breaking your budget. Using infrastructure-as-code with Terraform across AWS and GCP, every environment is version-controlled, reproducible, and provisioned in seconds rather than days.\n\nWe containerise applications with Docker, orchestrate with Kubernetes, and design serverless structures that scale automatically with demand — keeping operational overhead low and uptime high.\n\nWith monitoring, alerting, and automated recovery baked in from day one, you get infrastructure that stays resilient under pressure and predictable in cost.',
+    keyFeatures: [
+      'AWS & GCP infrastructure design',
+      'Infrastructure-as-Code with Terraform',
+      'Docker & Kubernetes orchestration',
+      'CI/CD & cloud cost optimisation',
+    ],
+    deliverable: 'Cloud Infrastructure Setup',
+  },
+  {
+    id: 'it-consulting',
+    slug: 'it-consulting',
+    title: 'IT Consulting',
+    shortDescription: 'Strategic technology guidance to de-risk every decision.',
+    icon: 'Users',
+    fullDescription:
+      'Navigate complex technology decisions with senior expertise on your side. We give leadership teams the architectural foresight, risk analysis, and roadmap clarity needed to invest confidently and avoid costly missteps.\n\nOur consultants audit legacy codebases, review security posture, and plan digital transformations grounded in your real constraints — not textbook ideals. We translate ambition into a phased, budgeted engineering roadmap you can actually execute.\n\nWhere it helps, we work alongside your teams through delivery, mentoring on modern practices and ensuring the plan on paper becomes results in production.',
+    keyFeatures: [
+      'Architecture & technology stack audits',
+      'Phased engineering roadmap blueprints',
+      'Legacy migration & re-architecture plans',
+      'Team mentorship & agile enablement',
+    ],
+    deliverable: 'Technology Roadmap',
+  },
+  {
+    id: 'cybersecurity',
+    slug: 'cybersecurity-solutions',
+    title: 'Cybersecurity Solutions',
+    shortDescription: 'Proactive security audits, hardening, and monitoring.',
+    icon: 'ShieldCheck',
+    fullDescription:
+      'Protect your customer data and earn lasting trust with comprehensive, proactive security. We implement layered defences — encryption at rest and in transit, strict access controls, and hardened API surfaces — to keep your systems resilient against modern threats.\n\nOur specialists run penetration tests and vulnerability assessments, then remediate against the OWASP Top 10, sealing the injection, XSS, and CSRF gaps attackers rely on.\n\nWith continuous monitoring, audit logging, and compliance guidance for standards like GDPR, HIPAA, and SOC 2, you gain enterprise-grade peace of mind and a security posture that scales with your business.',
+    keyFeatures: [
+      'Penetration testing & vulnerability assessment',
+      'OWASP Top 10 hardening & remediation',
+      'Encryption & role-based access controls',
+      'Continuous monitoring & compliance guidance',
+    ],
+    deliverable: 'Security Audit & Hardening',
+  },
 ];

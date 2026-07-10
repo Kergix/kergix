@@ -7,89 +7,7 @@ import { Menu, X, ChevronDown, Cpu, ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { navItems, NavItem } from "@/lib/data/nav";
 
-// Clean vector SVG Kergix logo component
-export function KergixLogo({ size = "default" }: { size?: "small" | "default" | "large" }) {
-  const isSmall = size === "small";
-  const isLarge = size === "large";
-
-  const height = isSmall ? 32 : isLarge ? 56 : 42;
-  const width = isSmall ? 120 : isLarge ? 220 : 160;
-
-  return (
-    <svg
-      width={width}
-      height={height}
-      viewBox="0 0 240 60"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className="select-none"
-    >
-      <defs>
-        <linearGradient id="logo-cyan" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#00E6FA" />
-          <stop offset="100%" stopColor="#0082AA" />
-        </linearGradient>
-        <linearGradient id="logo-silver" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#DCDCDC" />
-          <stop offset="50%" stopColor="#8A959C" />
-          <stop offset="100%" stopColor="#4A5456" />
-        </linearGradient>
-      </defs>
-
-      {/* Stylized K Mark */}
-      {/* Left Cyan Blade */}
-      <path
-        d="M 12,6 L 24,6 L 24,24 L 18,29 L 24,34 L 24,52 L 12,52 L 12,34 L 15.5,29 L 12,24 Z"
-        fill="url(#logo-cyan)"
-      />
-      {/* Right Metal Chevron Shard */}
-      <path
-        d="M 28,29 L 41,16 L 46,16 L 33,29 L 46,42 L 41,42 Z"
-        fill="url(#logo-silver)"
-      />
-      {/* Center glowing circuit point */}
-      <circle cx="28" cy="29" r="2.5" fill="#00E6FA" />
-
-      {/* Text Wordmark */}
-      <text
-        x="60"
-        y="35"
-        fill="#F5F9FA"
-        fontSize="24"
-        fontWeight="bold"
-        fontFamily="var(--font-space-grotesk), sans-serif"
-        letterSpacing="3"
-      >
-        KERG
-      </text>
-      {/* Portal/Vortex replacement or cyan detail on IX */}
-      <text
-        x="132"
-        y="35"
-        fill="#F5F9FA"
-        fontSize="24"
-        fontWeight="bold"
-        fontFamily="var(--font-space-grotesk), sans-serif"
-        letterSpacing="3"
-      >
-        IX
-      </text>
-      
-      {/* Subtitle */}
-      <text
-        x="60"
-        y="49"
-        fill="#A7B4B8"
-        fontSize="8.5"
-        fontFamily="var(--font-inter), sans-serif"
-        letterSpacing="2.8"
-        fontWeight="semibold"
-      >
-        IT SERVICES & PRODUCTS
-      </text>
-    </svg>
-  );
-}
+import { KergixLogo } from "@/components/shared/KergixLogo";
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -182,11 +100,11 @@ export default function Navbar() {
                               href={child.href}
                               className={`p-3 rounded-lg flex flex-col gap-1 transition-all ${
                                 pathname === child.href
-                                  ? "bg-bg-secondary border border-accent-cyan/20"
+                                  ? "bg-bg-secondary border border-white/10"
                                   : "hover:bg-bg-secondary/70 border border-transparent"
                               }`}
                             >
-                              <span className="font-heading font-bold text-sm text-text-primary group-hover:text-accent-cyan">
+                              <span className="font-heading font-bold text-sm text-text-primary group-hover:text-text-secondary transition-colors">
                                 {child.label}
                               </span>
                               <span className="text-[11px] text-text-muted leading-snug">
@@ -224,8 +142,8 @@ export default function Navbar() {
             className="fixed inset-0 z-40 bg-bg-primary/95 lg:hidden flex flex-col pt-24 px-6 overflow-y-auto"
           >
             {/* Ambient glows inside drawer */}
-            <div className="absolute right-[-10%] top-[-10%] w-[300px] h-[300px] bg-accent-cyan/10 rounded-full blur-[80px]" />
-            <div className="absolute left-[-10%] bottom-[-10%] w-[300px] h-[300px] bg-accent-teal-deep/5 rounded-full blur-[80px]" />
+            <div className="absolute right-[-10%] top-[-10%] w-[300px] h-[300px] bg-white/5 rounded-full blur-[80px]" />
+            <div className="absolute left-[-10%] bottom-[-10%] w-[300px] h-[300px] bg-white/5 rounded-full blur-[80px]" />
 
             <div className="flex flex-col gap-6 w-full max-w-lg mx-auto pb-10 z-10">
               {navItems.map((item) => {
@@ -241,7 +159,7 @@ export default function Navbar() {
                       >
                         <span>{item.label}</span>
                         <ChevronDown
-                          className={`w-5 h-5 text-accent-cyan transition-transform duration-300 ${
+                          className={`w-5 h-5 text-text-secondary transition-transform duration-300 ${
                             isDropdownOpen ? "rotate-180" : ""
                           }`}
                         />
@@ -283,7 +201,7 @@ export default function Navbar() {
               <Link
                 href="/contact"
                 onClick={() => setIsOpen(false)}
-                className="mt-6 w-full py-4 rounded-xl bg-gradient-to-r from-accent-cyan to-accent-teal-deep text-bg-primary font-heading font-bold text-base text-center flex items-center justify-center gap-2"
+                className="mt-6 w-full py-4 rounded-xl bg-white text-bg-primary font-heading font-bold text-base text-center flex items-center justify-center gap-2"
               >
                 <span>Get Started Now</span>
                 <ArrowRight className="w-4 h-4" />

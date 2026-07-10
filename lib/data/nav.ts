@@ -32,15 +32,5 @@ export const navItems: NavItem[] = [
       { label: "Oil & Gas", href: "/industries/oil-and-gas", description: "Refinery yield monitors, telemetry panels, sensor alerts." }
     ]
   },
-  { label: "Pricing", href: "/pricing" },
-  {
-    label: "Resources",
-    href: "#",
-    children: [
-      { label: "FAQ", href: "/faq", description: "Frequently asked questions regarding our software methodologies." },
-      { label: "Testimonials", href: "/testimonials", description: "Read reviews and case results directly from our B2B clients." },
-      { label: "About Us", href: "/about", description: "Learn about Kergix values, our approach, and engineering team." }
-    ]
-  },
   { label: "Contact", href: "/contact" }
 ];

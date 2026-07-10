@@ -2,89 +2,98 @@
 
 import React from "react";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import Image from "next/image";
+import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { motion } from "framer-motion";
 
 export default function OurApproachSection() {
-  return (
-    <section className="py-20 md:py-24 px-4 md:px-8 bg-bg-primary relative overflow-hidden">
-      <div className="max-w-7xl mx-auto">
-        {/* Dark elevated card — matches reference */}
-        <div className="dark-card p-8 md:p-12 lg:p-16 relative overflow-hidden">
-          {/* Subtle internal glow */}
-          <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-accent-cyan/4 rounded-full blur-[80px] pointer-events-none" />
+  const steps = [
+    { title: "Discovery & Strategy", desc: "Understanding your vision and aligning technology with business goals." },
+    { title: "Architecture & Design", desc: "Crafting scalable blueprints and intuitive user experiences." },
+    { title: "Agile Engineering", desc: "Iterative development with rigorous testing and continuous delivery." },
+  ];
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center relative z-10">
+  return (
+    <section className="py-24 px-4 md:px-8 bg-bg-primary relative overflow-hidden border-b border-white/10">
+      <div className="max-w-7xl mx-auto">
+        {/* Dark elevated card */}
+        <div className="bg-[#0a0a0a] border border-white/10 rounded-3xl p-8 md:p-12 lg:p-16 relative overflow-hidden">
+          {/* Subtle internal white glow instead of cyan */}
+          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-white/5 rounded-full blur-[100px] pointer-events-none" />
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center relative z-10">
             {/* Left: Text content */}
-            <div className="lg:col-span-6 flex flex-col gap-6">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-text-primary tracking-tight leading-tight">
-                Our Approach
-              </h2>
-              <p className="text-text-secondary text-sm md:text-base leading-relaxed max-w-lg">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi blandit ligula ut vestibulum commodo.
-              </p>
+            <div className="lg:col-span-6 flex flex-col gap-8">
+              <div className="flex flex-col gap-4">
+                <span className="text-white/50 font-heading text-xs font-extrabold uppercase tracking-widest">
+                  Our Methodology
+                </span>
+                <h2 className="text-3xl md:text-5xl font-heading font-extrabold text-white tracking-tight leading-tight">
+                  How We Build Excellence
+                </h2>
+                <p className="text-white/60 text-sm md:text-base leading-relaxed max-w-lg">
+                  We don't just write code; we engineer solutions. Our battle-tested approach ensures that from the initial whiteboard sketch to the final production deployment, every step is calculated for performance, scalability, and impact.
+                </p>
+              </div>
+
+              {/* Approach Steps */}
+              <div className="flex flex-col gap-6">
+                {steps.map((step, idx) => (
+                  <div key={idx} className="flex items-start gap-4">
+                    <div className="mt-1 flex-none">
+                      <CheckCircle2 className="w-5 h-5 text-white/40" />
+                    </div>
+                    <div className="flex flex-col">
+                      <h4 className="text-white font-heading font-semibold">{step.title}</h4>
+                      <p className="text-white/50 text-sm">{step.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
               <Link
                 href="/contact"
-                className="w-fit px-7 py-3 rounded-full bg-gradient-to-r from-accent-cyan via-accent-cyan-mid to-accent-teal-deep text-bg-primary font-heading font-bold text-sm hover:brightness-110 active:scale-[0.98] transition-all flex items-center gap-2 group shadow-[0_0_20px_rgba(0,210,240,0.2)]"
+                className="w-fit mt-4 px-8 py-4 rounded-full bg-white text-black font-heading font-bold text-sm hover:bg-gray-200 active:scale-[0.98] transition-all flex items-center gap-3 group shadow-[0_0_20px_rgba(255,255,255,0.1)]"
               >
-                <span>Discover Now</span>
+                <span>Start Your Project</span>
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
               </Link>
             </div>
 
-            {/* Right: Floating stat badge + abstract device illustration */}
-            <div className="lg:col-span-6 relative flex items-center justify-center min-h-[250px]">
-              {/* Abstract device mockup */}
-              <motion.div
-                className="relative"
-                animate={{ y: [0, -8, 0] }}
-                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-              >
-                {/* Abstract device shapes */}
-                <div className="flex gap-3 items-end">
-                  {/* Phone 1 */}
-                  <div className="w-20 h-36 rounded-xl bg-gradient-to-b from-bg-elevated to-bg-secondary border border-border-subtle overflow-hidden relative">
-                    <div className="absolute inset-0 bg-gradient-to-br from-accent-cyan/10 to-transparent" />
-                    <div className="p-2 flex flex-col gap-1 mt-6">
-                      <div className="w-full h-1.5 bg-accent-cyan/20 rounded-full" />
-                      <div className="w-3/4 h-1.5 bg-accent-cyan/15 rounded-full" />
-                      <div className="w-1/2 h-1.5 bg-accent-cyan/10 rounded-full" />
-                    </div>
-                  </div>
-
-                  {/* Phone 2 (larger, foreground) */}
-                  <div className="w-28 h-48 rounded-2xl bg-gradient-to-b from-bg-elevated to-bg-secondary border border-accent-cyan/20 overflow-hidden relative shadow-[0_10px_30px_rgba(0,0,0,0.4)] z-10">
-                    <div className="absolute inset-0 bg-gradient-to-br from-accent-cyan/8 to-transparent" />
-                    <div className="p-3 flex flex-col gap-2 mt-8">
-                      <div className="w-full h-2 bg-accent-cyan/25 rounded-full" />
-                      <div className="w-5/6 h-2 bg-accent-cyan/18 rounded-full" />
-                      <div className="w-3/4 h-2 bg-accent-cyan/12 rounded-full" />
-                      <div className="w-2/3 h-2 bg-accent-cyan/8 rounded-full" />
-                    </div>
-                  </div>
-
-                  {/* Phone 3 */}
-                  <div className="w-20 h-36 rounded-xl bg-gradient-to-b from-bg-elevated to-bg-secondary border border-border-subtle overflow-hidden relative">
-                    <div className="absolute inset-0 bg-gradient-to-br from-accent-teal-deep/10 to-transparent" />
-                    <div className="p-2 flex flex-col gap-1 mt-6">
-                      <div className="w-full h-1.5 bg-accent-cyan/15 rounded-full" />
-                      <div className="w-2/3 h-1.5 bg-accent-cyan/10 rounded-full" />
-                    </div>
-                  </div>
+            {/* Right: Abstract UI composition */}
+            <div className="lg:col-span-6 relative flex items-center justify-center min-h-[400px]">
+              <div className="relative w-full max-w-md">
+                {/* Main Dashboard Abstract */}
+                <div className="w-full rounded-2xl bg-[#0d0d0d] border border-white/10 overflow-hidden shadow-2xl relative flex items-center justify-center">
+                  <Image
+                    src="/images/approach-dashboard.png"
+                    alt="Software Architecture Dashboard"
+                    width={500}
+                    height={500}
+                    className="w-full h-auto object-cover opacity-90 hover:opacity-100 transition-opacity duration-500"
+                    priority
+                  />
                 </div>
 
-                {/* Floating stat badge — matches reference "2,554+" */}
-                <motion.div
-                  className="absolute -top-4 -right-4 md:right-0 bg-bg-elevated border border-accent-cyan/30 rounded-2xl px-5 py-4 flex flex-col shadow-[0_10px_30px_rgba(0,0,0,0.5)] z-20"
-                  animate={{ y: [0, 6, 0] }}
-                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                >
-                  <span className="text-2xl md:text-3xl font-heading font-extrabold gradient-text">
-                    2,554+
+                {/* Floating stat badge 1 */}
+                <div className="absolute -top-8 -right-4 bg-[#111] border border-white/10 rounded-2xl px-6 py-5 flex flex-col shadow-2xl z-20 backdrop-blur-md">
+                  <span className="text-2xl md:text-4xl font-heading font-extrabold text-white">
+                    99.9%
                   </span>
-                  <span className="text-xs text-text-secondary mt-0.5">Success Projects</span>
-                </motion.div>
-              </motion.div>
+                  <span className="text-xs text-white/50 mt-1 uppercase tracking-wider font-semibold">Uptime SLA</span>
+                </div>
+
+                {/* Floating stat badge 2 */}
+                <div className="absolute -bottom-10 -left-6 bg-[#111] border border-white/10 rounded-2xl px-6 py-5 flex items-center gap-4 shadow-2xl z-20 backdrop-blur-md">
+                  <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center">
+                    <CheckCircle2 className="w-6 h-6 text-white" />
+                  </div>
+                  <div className="flex flex-col">
+                    <span className="text-xl font-heading font-extrabold text-white">Zero</span>
+                    <span className="text-xs text-white/50 uppercase tracking-wider font-semibold">Tech Debt</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

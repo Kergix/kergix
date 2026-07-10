@@ -1,8 +1,5 @@
-"use client";
-
 import React from "react";
 import Link from "next/link";
-import { KergixLogo } from "./Navbar";
 
 const LinkedinIcon = ({ className }: { className?: string }) => (
   <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -31,7 +28,6 @@ export default function Footer() {
 
   const homeLinks = [
     { label: "Home", href: "/" },
-    { label: "Case Studies", href: "/portfolio" },
     { label: "Services", href: "/services" },
   ];
 
@@ -44,39 +40,39 @@ export default function Footer() {
   const quickLinks = [
     { label: "Contact", href: "/contact" },
     { label: "FAQ", href: "/faq" },
-    { label: "Blog", href: "/testimonials" },
   ];
 
   const infoItems = [
-    { label: "(065) 119-2930", href: "tel:+6567891234" },
-    { label: "201 Air Street, 3rd Floor", href: "#" },
-    { label: "support@kergix.com", href: "mailto:support@kergix.com" },
+    { label: "contact@kergix.com", href: "mailto:contact@kergix.com" },
   ];
 
   return (
-    <footer className="bg-bg-primary pt-20 pb-8 px-4 md:px-8 relative overflow-hidden z-10">
-      {/* Footer ambient glow — matches reference bottom-edge glow */}
-      <div className="glow-bg-footer" />
+    <footer className="bg-black pt-24 pb-12 px-4 md:px-8 relative overflow-hidden border-t border-white/5 z-10">
+      {/* Footer ambient glow */}
+      <div className="glow-bg-footer pointer-events-none" />
 
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Main footer grid */}
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-8 lg:gap-12 pb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-6 gap-10 lg:gap-12 pb-16">
           {/* Brand */}
-          <div className="col-span-2 md:col-span-1 flex flex-col gap-4">
-            <Link href="/" aria-label="Kergix home">
-              <span className="font-heading font-bold text-xl text-text-primary tracking-tight">Kergix</span>
+          <div className="col-span-1 sm:col-span-2 md:col-span-2 flex flex-col gap-5">
+            <Link href="/" aria-label="Kergix home" className="w-fit">
+              <span className="font-heading font-extrabold text-2xl text-white tracking-tight">Kergix</span>
             </Link>
+            <p className="text-white/50 text-sm leading-relaxed max-w-sm">
+              Architecting premium digital experiences, enterprise-grade software systems, and modern web architectures for ambitious brands.
+            </p>
           </div>
 
           {/* Home column */}
           <div className="flex flex-col gap-4">
-            <h4 className="font-heading font-bold text-text-primary text-sm">Home</h4>
-            <ul className="flex flex-col gap-2.5">
+            <h4 className="font-heading font-bold text-white text-sm tracking-wider uppercase text-xs opacity-40">Home</h4>
+            <ul className="flex flex-col gap-3">
               {homeLinks.map((link) => (
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="text-text-secondary hover:text-accent-cyan text-sm transition-colors"
+                    className="text-white/60 hover:text-white text-sm transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -87,13 +83,13 @@ export default function Footer() {
 
           {/* Services column */}
           <div className="flex flex-col gap-4">
-            <h4 className="font-heading font-bold text-text-primary text-sm">Services</h4>
-            <ul className="flex flex-col gap-2.5">
+            <h4 className="font-heading font-bold text-white text-sm tracking-wider uppercase text-xs opacity-40">Services</h4>
+            <ul className="flex flex-col gap-3">
               {servicesLinks.map((link) => (
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="text-text-secondary hover:text-accent-cyan text-sm transition-colors"
+                    className="text-white/60 hover:text-white text-sm transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -104,13 +100,13 @@ export default function Footer() {
 
           {/* Quick Link column */}
           <div className="flex flex-col gap-4">
-            <h4 className="font-heading font-bold text-text-primary text-sm">Quick Link</h4>
-            <ul className="flex flex-col gap-2.5">
+            <h4 className="font-heading font-bold text-white text-sm tracking-wider uppercase text-xs opacity-40">Company</h4>
+            <ul className="flex flex-col gap-3">
               {quickLinks.map((link) => (
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="text-text-secondary hover:text-accent-cyan text-sm transition-colors"
+                    className="text-white/60 hover:text-white text-sm transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -121,45 +117,44 @@ export default function Footer() {
 
           {/* Information column */}
           <div className="flex flex-col gap-4">
-            <h4 className="font-heading font-bold text-text-primary text-sm">Information</h4>
-            <ul className="flex flex-col gap-2.5">
+            <h4 className="font-heading font-bold text-white text-sm tracking-wider uppercase text-xs opacity-40">Inquiries</h4>
+            <ul className="flex flex-col gap-3">
               {infoItems.map((item) => (
                 <li key={item.label}>
-                  {item.href.startsWith("mailto:") || item.href.startsWith("tel:") ? (
-                    <a
-                      href={item.href}
-                      className="text-text-secondary hover:text-accent-cyan text-sm transition-colors"
-                    >
-                      {item.label}
-                    </a>
-                  ) : (
-                    <span className="text-text-secondary text-sm">{item.label}</span>
-                  )}
+                  <a
+                    href={item.href}
+                    className="text-white/60 hover:text-white text-sm transition-colors break-all"
+                  >
+                    {item.label}
+                  </a>
                 </li>
               ))}
             </ul>
           </div>
         </div>
 
-        {/* Privacy Policy row — matches reference top-right alignment */}
-        <div className="flex justify-end pb-8">
-          <Link href="/privacy" className="text-text-secondary hover:text-accent-cyan text-sm transition-colors">
-            Privacy Policy
-          </Link>
-        </div>
-
         {/* Divider */}
-        <div className="section-divider" />
+        <div className="h-[1px] w-full bg-white/10" />
 
-        {/* Bottom row: socials + copyright */}
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4 pt-8">
+        {/* Bottom row: socials + copyright + terms */}
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6 pt-8 text-xs text-white/40">
+          <div className="flex items-center gap-6">
+            <span>&copy; {currentYear} Kergix. All rights reserved.</span>
+            <Link href="/privacy" className="hover:text-white transition-colors">
+              Privacy Policy
+            </Link>
+            <Link href="/terms" className="hover:text-white transition-colors">
+              Terms of Service
+            </Link>
+          </div>
+
           {/* Social icons */}
-          <div className="flex gap-4">
+          <div className="flex gap-3">
             <a
               href="https://linkedin.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 rounded-full border border-border-subtle text-text-muted hover:text-accent-cyan hover:border-accent-cyan/40 transition-all"
+              className="p-2.5 rounded-full border border-white/10 text-white/50 hover:text-white hover:border-white/30 hover:bg-white/5 transition-all"
               aria-label="LinkedIn"
             >
               <LinkedinIcon className="w-4 h-4" />
@@ -168,7 +163,7 @@ export default function Footer() {
               href="https://twitter.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 rounded-full border border-border-subtle text-text-muted hover:text-accent-cyan hover:border-accent-cyan/40 transition-all"
+              className="p-2.5 rounded-full border border-white/10 text-white/50 hover:text-white hover:border-white/30 hover:bg-white/5 transition-all"
               aria-label="Twitter"
             >
               <TwitterIcon className="w-4 h-4" />
@@ -177,17 +172,12 @@ export default function Footer() {
               href="https://instagram.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 rounded-full border border-border-subtle text-text-muted hover:text-accent-cyan hover:border-accent-cyan/40 transition-all"
+              className="p-2.5 rounded-full border border-white/10 text-white/50 hover:text-white hover:border-white/30 hover:bg-white/5 transition-all"
               aria-label="Instagram"
             >
               <InstagramIcon className="w-4 h-4" />
             </a>
           </div>
-
-          {/* Terms */}
-          <Link href="/terms" className="text-text-secondary hover:text-accent-cyan text-sm transition-colors">
-            Term Of Condition
-          </Link>
         </div>
       </div>
     </footer>

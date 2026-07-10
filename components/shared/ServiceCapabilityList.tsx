@@ -1,8 +1,8 @@
 "use client";
 
 import React from "react";
-import Link from "next/link";
-import { services, Service } from "@/lib/data/services";
+import { services } from "@/lib/data/services";
+import { CheckCircle2 } from "lucide-react";
 
 interface ServiceCapabilityListProps {
   limit?: number;
@@ -20,7 +20,7 @@ export default function ServiceCapabilityList({ limit, highlightedSlug }: Servic
         return (
           <div
             key={service.slug}
-            className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-12 items-center py-10 md:py-14 border-b border-border-subtle/40 last:border-b-0"
+            className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-12 items-center py-10 md:py-14 border-b border-white/10 last:border-b-0"
           >
             {/* Column A: Name + Description + bullet points (left for even, right for odd) */}
             <div
@@ -32,18 +32,19 @@ export default function ServiceCapabilityList({ limit, highlightedSlug }: Servic
               {!isEven && (
                 <div className="flex flex-col gap-3 mb-2">
                   {service.features.slice(0, 3).map((feat, idx) => (
-                    <div key={idx} className="flex items-center cyan-bullet text-text-secondary text-sm">
+                    <div key={idx} className="flex items-center text-white/60 text-sm">
+                      <div className="w-1.5 h-1.5 rounded-full bg-white/40 mr-3 flex-shrink-0" />
                       {feat}
                     </div>
                   ))}
                 </div>
               )}
 
-              <h3 className="text-xl md:text-2xl font-heading font-bold text-text-primary">
+              <h3 className="text-xl md:text-2xl font-heading font-bold text-white">
                 {service.name}
               </h3>
 
-              <p className="text-text-secondary text-sm leading-relaxed max-w-lg">
+              <p className="text-white/60 text-sm leading-relaxed max-w-lg">
                 {service.longDescription}
               </p>
 
@@ -51,7 +52,8 @@ export default function ServiceCapabilityList({ limit, highlightedSlug }: Servic
               {isEven && (
                 <div className="flex flex-col gap-3 mt-2">
                   {service.features.slice(0, 3).map((feat, idx) => (
-                    <div key={idx} className="flex items-center cyan-bullet text-text-secondary text-sm">
+                    <div key={idx} className="flex items-center text-white/60 text-sm">
+                      <div className="w-1.5 h-1.5 rounded-full bg-white/40 mr-3 flex-shrink-0" />
                       {feat}
                     </div>
                   ))}
@@ -68,22 +70,24 @@ export default function ServiceCapabilityList({ limit, highlightedSlug }: Servic
               {isEven ? (
                 <div className="flex flex-col gap-3">
                   {service.benefits.map((benefit, idx) => (
-                    <div key={idx} className="flex items-center cyan-bullet text-text-secondary text-sm">
+                    <div key={idx} className="flex items-center text-white/60 text-sm">
+                      <CheckCircle2 className="w-4 h-4 text-white/30 mr-3 flex-shrink-0" />
                       {benefit}
                     </div>
                   ))}
                 </div>
               ) : (
                 <>
-                  <h3 className="text-xl md:text-2xl font-heading font-bold text-text-primary md:hidden">
+                  <h3 className="text-xl md:text-2xl font-heading font-bold text-white md:hidden">
                     {service.name}
                   </h3>
-                  <p className="text-text-secondary text-sm leading-relaxed max-w-lg md:hidden">
+                  <p className="text-white/60 text-sm leading-relaxed max-w-lg md:hidden">
                     {service.longDescription}
                   </p>
                   <div className="flex flex-col gap-3">
                     {service.benefits.map((benefit, idx) => (
-                      <div key={idx} className="flex items-center cyan-bullet text-text-secondary text-sm">
+                      <div key={idx} className="flex items-center text-white/60 text-sm">
+                        <CheckCircle2 className="w-4 h-4 text-white/30 mr-3 flex-shrink-0" />
                         {benefit}
                       </div>
                     ))}

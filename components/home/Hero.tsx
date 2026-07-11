@@ -4,10 +4,9 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Sparkles } from "lucide-react";
-
+import DotField from "./DotField";
 const HEADLINE_GRADIENT =
-  "linear-gradient(105deg, #FFFFFF 0%, #F5F9FA 42%, #AEB8BD 100%)";
+  "linear-gradient(105deg, #FFFFFF 0%, #EEF2F4 30%, #C5CED3 65%, #9AA8AF 100%)";
 
 function LaptopRender({ className = "" }: { className?: string }) {
   return (
@@ -17,16 +16,17 @@ function LaptopRender({ className = "" }: { className?: string }) {
       animate={{ opacity: 1, y: 0, scale: 1 }}
       transition={{ duration: 0.9, delay: 0.15, ease: "easeOut" }}
     >
-      <div className="absolute inset-6 bg-accent-cyan/12 rounded-[48px] blur-[70px] z-0" />
+      <div className="absolute inset-4 rounded-[48px] bg-gradient-to-b from-[#131516]/80 via-[#131516]/50 to-transparent blur-[56px] z-0" />
+      <div className="absolute inset-8 rounded-[48px] bg-[#131516]/60 blur-[72px] z-0" />
       <div className="relative z-10">
         <Image
-          src="/hero-laptop.png"
+          src="/hero-laptop-gray-tinted.png"
           alt="Kergix dashboard on a laptop showing performance and analytics"
           width={800}
           height={820}
           priority
           sizes="(max-width: 1024px) 88vw, 620px"
-          className="w-full h-auto select-none [filter:hue-rotate(170deg)_saturate(1.15)_brightness(1.02)]"
+          className="w-full h-auto select-none [filter:contrast(1.1)_brightness(1.06)_saturate(0.92)] drop-shadow-[0_24px_48px_rgba(0,0,0,0.55)]"
         />
       </div>
     </motion.div>
@@ -95,8 +95,25 @@ export default function Hero() {
   return (
     <section className="relative min-h-screen pt-28 md:pt-24 pb-16 px-4 md:px-8 bg-bg-primary overflow-hidden z-10 flex items-center">
       {/* Ambient glow */}
-      <div className="absolute right-[-8%] top-[-12%] w-[680px] h-[680px] rounded-full bg-accent-cyan/12 blur-[150px] z-0 pointer-events-none" />
-      <div className="absolute right-[6%] top-[20%] w-[420px] h-[420px] rounded-full bg-accent-teal-deep/10 blur-[120px] z-0 pointer-events-none" />
+      <div className="absolute right-[-8%] top-[-12%] w-[680px] h-[680px] rounded-full bg-[#131516] blur-[150px] z-0 pointer-events-none" />
+      <div className="absolute right-[6%] top-[20%] w-[420px] h-[420px] rounded-full bg-[#131516] blur-[120px] z-0 pointer-events-none" />
+      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[55%] h-[45%] rounded-full bg-[#131516] blur-[100px] z-0 pointer-events-none" />
+
+      {/* Interactive dot-field background */}
+      <div className="pointer-events-none absolute inset-0 z-0">
+        <DotField
+          dotRadius={2.0}
+          dotSpacing={16}
+          bulgeStrength={60}
+          glowRadius={200}
+          cursorRadius={340}
+          sparkle={false}
+          waveAmplitude={0}
+          gradientFrom="rgba(255, 255, 255, 0.35)"
+          gradientTo="rgba(255, 255, 255, 0.1)"
+          glowColor="rgba(255, 255, 255, 0.15)"
+        />
+      </div>
 
       {/* ═══════════ Desktop ═══════════ */}
       <div className="hidden lg:block relative w-full max-w-7xl mx-auto min-h-[720px] xl:min-h-[780px] z-10">

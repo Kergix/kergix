@@ -142,16 +142,16 @@ export default function ServiceDetailsPaginated({
       {isMounted && (
         <div className="pointer-events-none absolute inset-0 -z-20">
           <DotField
-            dotRadius={1.5}
+            dotRadius={2.0}
             dotSpacing={16}
             bulgeStrength={60}
             glowRadius={200}
             cursorRadius={340}
             sparkle={false}
             waveAmplitude={0}
-            gradientFrom="rgba(255, 255, 255, 0.25)"
-            gradientTo="rgba(255, 255, 255, 0.05)"
-            glowColor="rgba(255, 255, 255, 0.08)"
+            gradientFrom="rgba(255, 255, 255, 0.35)"
+            gradientTo="rgba(255, 255, 255, 0.1)"
+            glowColor="rgba(255, 255, 255, 0.15)"
           />
         </div>
       )}

@@ -1,21 +1,19 @@
-"use client";
-
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { motion } from "framer-motion";
 import DotField from "./DotField";
+import { 
+  AnimatedHeadline, 
+  AnimatedMobileHeadline, 
+  AnimatedLaptop, 
+  AnimatedCard 
+} from "./HeroAnimations";
 const HEADLINE_GRADIENT =
   "linear-gradient(105deg, #FFFFFF 0%, #EEF2F4 30%, #C5CED3 65%, #9AA8AF 100%)";
 
 function LaptopRender({ className = "" }: { className?: string }) {
   return (
-    <motion.div
-      className={`relative ${className}`}
-      initial={{ opacity: 0, y: 24, scale: 0.96 }}
-      animate={{ opacity: 1, y: 0, scale: 1 }}
-      transition={{ duration: 0.9, delay: 0.15, ease: "easeOut" }}
-    >
+    <AnimatedLaptop className={`relative ${className}`}>
       <div className="absolute inset-4 rounded-[48px] bg-gradient-to-b from-[#131516]/80 via-[#131516]/50 to-transparent blur-[56px] z-0" />
       <div className="absolute inset-8 rounded-[48px] bg-[#131516]/60 blur-[72px] z-0" />
       <div className="relative z-10">
@@ -29,7 +27,7 @@ function LaptopRender({ className = "" }: { className?: string }) {
           className="w-full h-auto select-none [filter:contrast(1.1)_brightness(1.06)_saturate(0.92)] drop-shadow-[0_24px_48px_rgba(0,0,0,0.55)]"
         />
       </div>
-    </motion.div>
+    </AnimatedLaptop>
   );
 }
 
@@ -120,24 +118,22 @@ export default function Hero() {
 
         {/* Headlines */}
         <h1 className="absolute inset-0 z-10 font-heading font-bold tracking-[-0.03em] leading-[0.9] pointer-events-none">
-          <motion.span
+          <AnimatedHeadline
             className="absolute top-[12%] left-0 w-full text-center text-[clamp(4rem,10.5vw,10rem)] bg-clip-text text-transparent"
             style={{ backgroundImage: HEADLINE_GRADIENT }}
-            initial={{ opacity: 0, y: -50, filter: "blur(8px)" }}
-            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1], delay: 0.05 }}
+            delay={0.05}
+            yOffset={-50}
           >
             Your Vision
-          </motion.span>
-          <motion.span
+          </AnimatedHeadline>
+          <AnimatedHeadline
             className="absolute bottom-[12%] right-[2%] z-0 text-[clamp(4rem,10.5vw,10rem)] bg-clip-text text-transparent"
             style={{ backgroundImage: HEADLINE_GRADIENT }}
-            initial={{ opacity: 0, y: 50, filter: "blur(8px)" }}
-            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
+            delay={0.15}
+            yOffset={50}
           >
             Our Code
-          </motion.span>
+          </AnimatedHeadline>
         </h1>
 
         {/* Laptop — centered */}
@@ -146,92 +142,82 @@ export default function Hero() {
         </div>
 
         {/* Capability list — mid left */}
-        <motion.div
+        <AnimatedCard
           className="absolute left-[1%] top-[43%] z-30"
-          initial={{ opacity: 0, x: -40 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.9, delay: 0.45, ease: [0.16, 1, 0.3, 1] }}
+          delay={0.45}
+          xOffset={-40}
         >
           <CapabilityList />
-        </motion.div>
+        </AnimatedCard>
 
         {/* Get Started card — bottom left */}
-        <motion.div
+        <AnimatedCard
           className="absolute left-[1%] bottom-[3%] w-[280px] z-40"
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          delay={0.6}
+          yOffset={40}
         >
           <GetStartedCard />
-        </motion.div>
+        </AnimatedCard>
 
         {/* Info card — mid right */}
-        <motion.div
+        <AnimatedCard
           className="absolute right-[1%] top-[27%] w-[240px] z-40"
-          initial={{ opacity: 0, x: 40 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.9, delay: 0.45, ease: [0.16, 1, 0.3, 1] }}
+          delay={0.45}
+          xOffset={40}
         >
           <InfoCard />
-        </motion.div>
+        </AnimatedCard>
 
         {/* Experience card — lower right */}
-        <motion.div
+        <AnimatedCard
           className="absolute right-[5%] top-[50%] w-[240px] z-40"
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          delay={0.6}
+          yOffset={40}
         >
           <ExperienceCard />
-        </motion.div>
+        </AnimatedCard>
       </div>
 
       {/* ═══════════ Mobile / tablet ═══════════ */}
       <div className="lg:hidden relative w-full max-w-2xl mx-auto flex flex-col items-center text-center gap-8 z-10">
         <h1 className="sr-only">Your Vision Our Code</h1>
 
-        <motion.div
+        <AnimatedMobileHeadline
           className="font-heading font-bold tracking-[-0.03em] leading-[0.92] text-[clamp(3rem,15vw,5.5rem)]"
-          initial={{ opacity: 0, y: -30, filter: "blur(6px)" }}
-          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-          transition={{ duration: 0.9, delay: 0.05, ease: [0.16, 1, 0.3, 1] }}
+          delay={0.05}
+          yOffset={-30}
         >
           <span className="block bg-clip-text text-transparent" style={{ backgroundImage: HEADLINE_GRADIENT }}>
             Your Vision
           </span>
-        </motion.div>
+        </AnimatedMobileHeadline>
 
         <LaptopRender className="w-full max-w-[440px]" />
 
-        <motion.div
+        <AnimatedMobileHeadline
           className="font-heading font-bold tracking-[-0.03em] leading-[0.92] text-[clamp(3rem,15vw,5.5rem)]"
-          initial={{ opacity: 0, y: 30, filter: "blur(6px)" }}
-          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-          transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+          delay={0.2}
+          yOffset={30}
         >
           <span className="block bg-clip-text text-transparent" style={{ backgroundImage: HEADLINE_GRADIENT }}>
             Our Code
           </span>
-        </motion.div>
+        </AnimatedMobileHeadline>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-        >
+        <AnimatedCard delay={0.4} yOffset={20} duration={0.8}>
           <CapabilityList />
-        </motion.div>
+        </AnimatedCard>
 
-        <motion.div
+        <AnimatedCard
           className="w-full flex flex-col gap-4 max-w-sm"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.55 }}
+          delay={0.55}
+          yOffset={30}
+          duration={0.8}
         >
           <GetStartedCard />
           <InfoCard />
           <ExperienceCard />
-        </motion.div>
+        </AnimatedCard>
       </div>
     </section>
   );

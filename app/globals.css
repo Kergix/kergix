@@ -90,12 +90,12 @@ body {
   background: #05070A;
 }
 ::-webkit-scrollbar-thumb {
-  background: #10151C;
-  border: 1px solid rgba(0, 210, 240, 0.12);
+  background: #1A1F26;
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #0082AA;
+  background: #2C333D;
 }
 
 /* ══════════════════════════════════════════

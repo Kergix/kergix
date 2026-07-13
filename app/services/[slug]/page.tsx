@@ -9,6 +9,9 @@ import ServiceCapabilityList from "@/components/shared/ServiceCapabilityList";
 import BuildingWithBestTools from "@/components/shared/BuildingWithBestTools";
 import WhyChooseUsSection from "@/components/shared/WhyChooseUsSection";
 import CTAFormSection from "@/components/shared/CTAFormSection";
+import { Suspense } from "react";
+import { CardSkeleton } from "@/components/skeletons/CardSkeleton";
+import { ContactFormSkeleton } from "@/components/skeletons/ContactFormSkeleton";
 
 interface ServiceDetailPageProps {
   params: Promise<{ slug: string }>;
@@ -120,7 +123,9 @@ export default async function ServiceDetailPage({ params }: ServiceDetailPagePro
             </h2>
           </div>
           {/* We display the list of capabilities with a highlighted border around the active slug */}
-          <ServiceCapabilityList highlightedSlug={service.slug} />
+          <Suspense fallback={<CardSkeleton count={8} />}>
+            <ServiceCapabilityList highlightedSlug={service.slug} />
+          </Suspense>
         </div>
       </section>
 
@@ -143,7 +148,9 @@ export default async function ServiceDetailPage({ params }: ServiceDetailPagePro
       <WhyChooseUsSection />
 
       {/* 7. CTA Contact form */}
-      <CTAFormSection />
+      <Suspense fallback={<div className="py-24"><ContactFormSkeleton /></div>}>
+        <CTAFormSection />
+      </Suspense>
     </div>
   );
 }

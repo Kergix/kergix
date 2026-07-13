@@ -46,10 +46,10 @@ export default function ServicesModuleSlider({
       for (let entry of entries) {
         const width = entry.contentRect.width;
         setContainerWidth(width);
-        
+
         let newGap = 24;
         let newCardWidth = 0;
-        
+
         if (width < 768) {
           newGap = 16;
           newCardWidth = width;
@@ -63,7 +63,7 @@ export default function ServicesModuleSlider({
           newGap = 24;
           newCardWidth = Math.min(width * 0.30, 420);
         }
-        
+
         setGap(newGap);
         setCardWidth(newCardWidth);
       }
@@ -77,7 +77,7 @@ export default function ServicesModuleSlider({
   // Sync index to x position when not dragging
   useEffect(() => {
     if (itemWidth === 0) return;
-    
+
     // Calculate max visible index based on visible items
     let visibleItems = 1;
     if (containerWidth >= 1024) visibleItems = 3;
@@ -85,9 +85,9 @@ export default function ServicesModuleSlider({
 
     const maxIndex = Math.max(0, modules.length - visibleItems);
     const clampedIndex = Math.min(currentIndex, maxIndex);
-    
+
     const targetX = -clampedIndex * itemWidth;
-    
+
     if (reducedMotion) {
       controls.set({ x: targetX });
     } else {
@@ -103,7 +103,7 @@ export default function ServicesModuleSlider({
     if (!autoplay || isPaused || reducedMotion) return;
 
     let timer: NodeJS.Timeout;
-    
+
     const handleVisibility = () => {
       if (document.visibilityState === "hidden") {
         setIsPaused(true);
@@ -113,7 +113,7 @@ export default function ServicesModuleSlider({
         pauseTimeoutRef.current = setTimeout(() => setIsPaused(false), 3000);
       }
     };
-    
+
     document.addEventListener("visibilitychange", handleVisibility);
 
     timer = setInterval(() => {
@@ -144,16 +144,16 @@ export default function ServicesModuleSlider({
     handleInteractionEnd();
     const offset = info.offset.x;
     const velocity = info.velocity.x;
-    
+
     let visibleItems = 1;
     if (containerWidth >= 1024) visibleItems = 3;
     else if (containerWidth >= 768) visibleItems = 2;
-    
+
     const maxIndex = Math.max(0, modules.length - visibleItems);
-    
+
     // Direction: negative offset = moving left (next slide)
     let indexChange = 0;
-    
+
     if (Math.abs(offset) > itemWidth * 0.3 || Math.abs(velocity) > 400) {
       if (offset < 0) {
         indexChange = Math.ceil(Math.abs(offset) / itemWidth);
@@ -161,10 +161,10 @@ export default function ServicesModuleSlider({
         indexChange = -Math.ceil(Math.abs(offset) / itemWidth);
       }
     }
-    
+
     let newIndex = currentIndex + indexChange;
     newIndex = Math.max(0, Math.min(newIndex, maxIndex));
-    
+
     if (newIndex !== currentIndex) {
       setCurrentIndex(newIndex);
     } else {
@@ -204,9 +204,9 @@ export default function ServicesModuleSlider({
           className="h-full bg-accent-cyan"
           initial={{ width: "0%" }}
           animate={{ width: isActive && !isPaused && !reducedMotion ? "100%" : isActive && isPaused ? "100%" : "0%" }}
-          transition={{ 
-            duration: isActive && !isPaused && !reducedMotion ? autoplayInterval / 1000 : 0, 
-            ease: "linear" 
+          transition={{
+            duration: isActive && !isPaused && !reducedMotion ? autoplayInterval / 1000 : 0,
+            ease: "linear"
           }}
           style={{ width: isActive && isPaused ? undefined : "0%" }}
         />
@@ -215,7 +215,7 @@ export default function ServicesModuleSlider({
   };
 
   return (
-    <section 
+    <section
       className={`relative w-full overflow-hidden ${className}`}
       onMouseEnter={handleInteractionStart}
       onMouseLeave={handleInteractionEnd}
@@ -237,10 +237,10 @@ export default function ServicesModuleSlider({
       </svg>
 
       <div className="max-w-[1600px] mx-auto px-4 md:px-8 relative">
-        
+
         {/* Track Container */}
-        <div 
-          ref={containerRef} 
+        <div
+          ref={containerRef}
           className="w-full relative touch-pan-y"
           style={{ touchAction: "pan-y" }}
         >
@@ -315,9 +315,8 @@ export default function ServicesModuleSlider({
                   aria-label={`Go to ${module.title} slide`}
                   aria-current={isActive ? "true" : "false"}
                   onClick={() => setCurrentIndex(idx)}
-                  className={`w-2 h-2 rounded-full transition-all duration-200 ${
-                    isActive ? "bg-accent-cyan opacity-100 scale-110" : "bg-metal-mid opacity-40 hover:opacity-70"
-                  }`}
+                  className={`w-2 h-2 rounded-full transition-all duration-200 ${isActive ? "bg-accent-cyan opacity-100 scale-110" : "bg-metal-mid opacity-40 hover:opacity-70"
+                    }`}
                 />
                 {/* Autoplay Progress Bar */}
                 <ProgressBar isActive={isActive} />

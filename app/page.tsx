@@ -11,6 +11,10 @@ import OurApproachSection from "@/components/shared/OurApproachSection";
 import ServiceCapabilityList from "@/components/shared/ServiceCapabilityList";
 import CTAFormSection from "@/components/shared/CTAFormSection";
 import SplashCursor from "@/components/shared/SplashCursor";
+import { Suspense } from "react";
+import { ListSkeleton } from "@/components/skeletons/ListSkeleton";
+import { ContactFormSkeleton } from "@/components/skeletons/ContactFormSkeleton";
+import { CardSkeleton } from "@/components/skeletons/CardSkeleton";
 
 export default function HomePage() {
   return (
@@ -53,7 +57,9 @@ export default function HomePage() {
               Driving Innovation in Every Industry
             </h2>
           </div>
-          <IndustryRankedList limit={6} />
+          <Suspense fallback={<ListSkeleton count={6} />}>
+            <IndustryRankedList limit={6} />
+          </Suspense>
         </div>
       </section>
 
@@ -111,13 +117,17 @@ export default function HomePage() {
             </h2>
           </div>
           <div className="pointer-events-auto">
-            <ServiceCapabilityList />
+            <Suspense fallback={<CardSkeleton count={8} />}>
+              <ServiceCapabilityList />
+            </Suspense>
           </div>
         </div>
       </section>
 
       {/* 12. CTA form */}
-      <CTAFormSection />
+      <Suspense fallback={<div className="py-24"><ContactFormSkeleton /></div>}>
+        <CTAFormSection />
+      </Suspense>
     </div>
   );
 }

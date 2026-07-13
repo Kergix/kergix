@@ -62,7 +62,7 @@ export function KergixLogo({ size = "default" }: { size?: "small" | "default" | 
       >
         IX
       </text>
-      
+
       {/* Subtitle */}
       <text
         x="60"

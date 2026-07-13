@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import { KergixFooterLogo } from "@/components/shared/KergixFooterLogo";
 
 const LinkedinIcon = ({ className }: { className?: string }) => (
   <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -56,8 +57,8 @@ export default function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-6 gap-10 lg:gap-12 pb-16">
           {/* Brand */}
           <div className="col-span-1 sm:col-span-2 md:col-span-2 flex flex-col gap-5">
-            <Link href="/" aria-label="Kergix home" className="w-fit">
-              <span className="font-heading font-extrabold text-2xl text-white tracking-tight">Kergix</span>
+            <Link href="/" aria-label="Kergix home" className="w-fit -mt-8">
+              <KergixFooterLogo />
             </Link>
             <p className="text-white/50 text-sm leading-relaxed max-w-sm">
               Architecting premium digital experiences, enterprise-grade software systems, and modern web architectures for ambitious brands.

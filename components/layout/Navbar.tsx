@@ -40,16 +40,15 @@ export default function Navbar() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-          scrolled
+        className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolled
             ? "bg-bg-primary/80 backdrop-blur-md border-b border-border-subtle py-3"
             : "bg-transparent py-5"
-        }`}
+          }`}
       >
         <div className="max-w-7xl mx-auto px-4 md:px-8 flex items-center justify-between relative">
           {/* Logo link */}
           <Link href="/" className="flex items-center" aria-label="Kergix home page">
-          <span className="font-heading font-bold text-xl text-text-primary tracking-tight">Kergix</span>
+            <span className="font-heading font-bold text-xl text-text-primary tracking-tight">Kergix</span>
           </Link>
 
           {/* Desktop Navigation Link bar — centered */}
@@ -67,11 +66,10 @@ export default function Navbar() {
                 >
                   <Link
                     href={item.href}
-                    className={`relative px-4 py-2 text-sm font-semibold flex items-center gap-1.5 transition-colors focus:outline-none ${
-                      isItemActive
+                    className={`relative px-4 py-2 text-sm font-semibold flex items-center gap-1.5 transition-colors focus:outline-none ${isItemActive
                         ? "text-text-primary"
                         : "text-text-secondary hover:text-text-primary"
-                    }`}
+                      }`}
                   >
                     <span>{item.label}</span>
                     {hasDropdown && (
@@ -98,11 +96,10 @@ export default function Navbar() {
                             <Link
                               key={child.label}
                               href={child.href}
-                              className={`p-3 rounded-lg flex flex-col gap-1 transition-all ${
-                                pathname === child.href
+                              className={`p-3 rounded-lg flex flex-col gap-1 transition-all ${pathname === child.href
                                   ? "bg-bg-secondary border border-white/10"
                                   : "hover:bg-bg-secondary/70 border border-transparent"
-                              }`}
+                                }`}
                             >
                               <span className="font-heading font-bold text-sm text-text-primary group-hover:text-text-secondary transition-colors">
                                 {child.label}
@@ -121,7 +118,7 @@ export default function Navbar() {
             })}
           </nav>
 
-{/* Hamburger button */}
+          {/* Hamburger button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
             className="lg:hidden p-2 rounded-lg border border-border-subtle bg-bg-secondary text-text-primary focus:outline-none"
@@ -159,9 +156,8 @@ export default function Navbar() {
                       >
                         <span>{item.label}</span>
                         <ChevronDown
-                          className={`w-5 h-5 text-text-secondary transition-transform duration-300 ${
-                            isDropdownOpen ? "rotate-180" : ""
-                          }`}
+                          className={`w-5 h-5 text-text-secondary transition-transform duration-300 ${isDropdownOpen ? "rotate-180" : ""
+                            }`}
                         />
                       </button>
                     ) : (

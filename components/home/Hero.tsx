@@ -9,22 +9,22 @@ import {
   AnimatedCard 
 } from "./HeroAnimations";
 const HEADLINE_GRADIENT =
-  "linear-gradient(105deg, #FFFFFF 0%, #EEF2F4 30%, #C5CED3 65%, #9AA8AF 100%)";
+  "linear-gradient(105deg, #FFFFFF 0%, #E6FBFE 30%, #7FE8F8 65%, #00C8E6 100%)";
 
 function LaptopRender({ className = "" }: { className?: string }) {
   return (
     <AnimatedLaptop className={`relative ${className}`}>
-      <div className="absolute inset-4 rounded-[48px] bg-gradient-to-b from-[#131516]/80 via-[#131516]/50 to-transparent blur-[56px] z-0" />
-      <div className="absolute inset-8 rounded-[48px] bg-[#131516]/60 blur-[72px] z-0" />
+      <div className="absolute inset-4 rounded-[48px] bg-gradient-to-b from-[#06333F]/70 via-[#082A34]/40 to-transparent blur-[56px] z-0" />
+      <div className="absolute inset-8 rounded-[48px] bg-[#06333F]/50 blur-[72px] z-0" />
       <div className="relative z-10">
         <Image
-          src="/hero-laptop-gray-tinted.png"
+          src="/hero-laptop-cyan.png"
           alt="Kergix dashboard on a laptop showing performance and analytics"
-          width={800}
-          height={820}
+          width={798}
+          height={822}
           priority
           sizes="(max-width: 1024px) 88vw, 620px"
-          className="w-full h-auto select-none [filter:contrast(1.1)_brightness(1.06)_saturate(0.92)] drop-shadow-[0_24px_48px_rgba(0,0,0,0.55)]"
+          className="w-full h-auto select-none [filter:contrast(1.08)_brightness(1.05)] drop-shadow-[0_24px_48px_rgba(0,0,0,0.55)]"
         />
       </div>
     </AnimatedLaptop>
@@ -39,7 +39,7 @@ function CapabilityList() {
       {capabilities.map((c) => (
         <span
           key={c}
-          className="text-text-secondary text-sm md:text-base transition-colors duration-200 hover:text-text-primary cursor-default"
+          className="text-text-secondary text-sm md:text-base transition-colors duration-200 hover:text-accent-cyan-bright cursor-default"
         >
           {c}
         </span>
@@ -50,7 +50,7 @@ function CapabilityList() {
 
 function InfoCard() {
   return (
-    <div className="rounded-2xl border border-border-subtle bg-bg-secondary/40 backdrop-blur-sm p-5 w-full">
+    <div className="rounded-2xl border border-accent-cyan/15 bg-bg-secondary/40 backdrop-blur-sm p-5 w-full">
       <p className="text-text-secondary text-sm leading-relaxed">
         Ready to build something exceptional? Let&apos;s bring your idea to life.
       </p>
@@ -60,8 +60,8 @@ function InfoCard() {
 
 function ExperienceCard() {
   return (
-    <div className="rounded-2xl border border-border-subtle bg-bg-secondary/40 backdrop-blur-sm px-5 py-4 flex items-center gap-3 w-full">
-      <span className="font-heading font-bold text-text-primary text-4xl leading-none">
+    <div className="rounded-2xl border border-accent-cyan/15 bg-bg-secondary/40 backdrop-blur-sm px-5 py-4 flex items-center gap-3 w-full">
+      <span className="font-heading font-bold text-accent-cyan text-4xl leading-none">
         5+
       </span>
       <span className="text-text-secondary text-sm leading-tight">
@@ -75,13 +75,13 @@ function ExperienceCard() {
 
 function GetStartedCard() {
   return (
-    <div className="rounded-2xl border border-border-subtle bg-bg-secondary/40 backdrop-blur-sm p-5 w-full">
+    <div className="rounded-2xl border border-accent-cyan/15 bg-bg-secondary/40 backdrop-blur-sm p-5 w-full">
       <p className="text-text-secondary text-sm leading-relaxed mb-4">
         Partner with our expert engineers to create scalable, secure digital solutions.
       </p>
       <Link
         href="/contact"
-        className="inline-flex px-6 py-2.5 rounded-full bg-text-primary text-bg-primary font-heading font-bold text-sm hover:brightness-90 active:scale-[0.98] transition-all shadow-lg shadow-black/20"
+        className="inline-flex px-6 py-2.5 rounded-full bg-gradient-to-r from-accent-cyan-bright to-accent-cyan-mid text-[#03181E] font-heading font-bold text-sm hover:brightness-110 active:scale-[0.98] transition-all shadow-lg shadow-accent-cyan/25"
       >
         Get Started
       </Link>
@@ -93,9 +93,17 @@ export default function Hero() {
   return (
     <section className="relative min-h-screen pt-28 md:pt-24 pb-16 px-4 md:px-8 bg-bg-primary overflow-hidden z-10 flex items-center">
       {/* Ambient glow */}
-      <div className="absolute right-[-8%] top-[-12%] w-[680px] h-[680px] rounded-full bg-[#131516] blur-[150px] z-0 pointer-events-none" />
-      <div className="absolute right-[6%] top-[20%] w-[420px] h-[420px] rounded-full bg-[#131516] blur-[120px] z-0 pointer-events-none" />
-      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[55%] h-[45%] rounded-full bg-[#131516] blur-[100px] z-0 pointer-events-none" />
+      <div className="absolute right-[-8%] top-[-12%] w-[680px] h-[680px] rounded-full bg-[#052A35] blur-[150px] z-0 pointer-events-none" />
+      <div className="absolute right-[6%] top-[20%] w-[420px] h-[420px] rounded-full bg-[#04212A] blur-[120px] z-0 pointer-events-none" />
+      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[55%] h-[45%] rounded-full bg-[#052A35] blur-[100px] z-0 pointer-events-none" />
+
+      {/* Diagonal light beams from the top-right corner */}
+      <div className="absolute -top-24 right-[-12%] w-[860px] h-[190px] rotate-[-32deg] origin-top-right bg-gradient-to-l from-accent-cyan/12 via-accent-cyan/4 to-transparent blur-2xl z-0 pointer-events-none" />
+      <div className="absolute top-6 right-[-6%] w-[560px] h-[90px] rotate-[-32deg] origin-top-right bg-gradient-to-l from-accent-cyan-bright/10 via-accent-cyan/3 to-transparent blur-xl z-0 pointer-events-none" />
+
+      {/* Horizon glow line beneath the laptop */}
+      <div className="absolute bottom-[7%] left-1/2 -translate-x-1/2 w-[72%] max-w-4xl h-px bg-gradient-to-r from-transparent via-accent-cyan/50 to-transparent z-0 pointer-events-none" />
+      <div className="absolute bottom-[5%] left-1/2 -translate-x-1/2 w-[56%] max-w-3xl h-16 bg-accent-cyan/8 blur-3xl rounded-full z-0 pointer-events-none" />
 
       {/* Interactive dot-field background */}
       <div className="pointer-events-none absolute inset-0 z-0">
@@ -107,9 +115,9 @@ export default function Hero() {
           cursorRadius={340}
           sparkle={false}
           waveAmplitude={0}
-          gradientFrom="rgba(255, 255, 255, 0.35)"
-          gradientTo="rgba(255, 255, 255, 0.1)"
-          glowColor="rgba(255, 255, 255, 0.15)"
+          gradientFrom="rgba(0, 230, 250, 0.35)"
+          gradientTo="rgba(0, 130, 170, 0.12)"
+          glowColor="rgba(0, 230, 250, 0.22)"
         />
       </div>
 

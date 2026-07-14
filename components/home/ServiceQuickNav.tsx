@@ -53,10 +53,10 @@ export default function ServiceQuickNav() {
               className="group flex items-center gap-4 mx-6 md:mx-10 cursor-pointer"
             >
               {/* Subtle glass icon wrapper */}
-              <div className="relative flex items-center justify-center w-8 h-8 rounded-full bg-white/5 border border-white/10 group-hover:bg-white/10 group-hover:border-white/20 transition-all duration-300">
-                <IconRenderer 
-                  name={service.iconName} 
-                  className="w-3.5 h-3.5 text-text-muted group-hover:text-white transition-colors duration-300" 
+              <div className="relative flex items-center justify-center w-8 h-8 rounded-full bg-white/5 border border-white/10 group-hover:bg-accent-cyan/10 group-hover:border-accent-cyan/30 transition-all duration-300">
+                <IconRenderer
+                  name={service.iconName}
+                  className="w-3.5 h-3.5 text-text-muted group-hover:text-accent-cyan-bright transition-colors duration-300"
                 />
               </div>
               
@@ -65,7 +65,7 @@ export default function ServiceQuickNav() {
                 className={`text-sm md:text-[15px] font-semibold tracking-[0.15em] uppercase transition-all duration-300
                   ${isHovered ? "opacity-40" : "opacity-70"} 
                   text-text-muted
-                  group-hover:!opacity-100 group-hover:text-white group-hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.3)]
+                  group-hover:!opacity-100 group-hover:text-accent-cyan-bright group-hover:drop-shadow-[0_0_8px_rgba(0,230,250,0.35)]
                 `}
               >
                 {service.name}

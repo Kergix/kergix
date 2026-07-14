@@ -33,7 +33,7 @@ export default function ServiceCapabilityList({ limit, highlightedSlug }: Servic
                 <div className="flex flex-col gap-3 mb-2">
                   {service.features.slice(0, 3).map((feat, idx) => (
                     <div key={idx} className="flex items-center text-white/60 text-sm">
-                      <div className="w-1.5 h-1.5 rounded-full bg-white/40 mr-3 flex-shrink-0" />
+                      <div className="w-1.5 h-1.5 rounded-full bg-accent-cyan mr-3 flex-shrink-0" />
                       {feat}
                     </div>
                   ))}
@@ -53,7 +53,7 @@ export default function ServiceCapabilityList({ limit, highlightedSlug }: Servic
                 <div className="flex flex-col gap-3 mt-2">
                   {service.features.slice(0, 3).map((feat, idx) => (
                     <div key={idx} className="flex items-center text-white/60 text-sm">
-                      <div className="w-1.5 h-1.5 rounded-full bg-white/40 mr-3 flex-shrink-0" />
+                      <div className="w-1.5 h-1.5 rounded-full bg-accent-cyan mr-3 flex-shrink-0" />
                       {feat}
                     </div>
                   ))}
@@ -71,7 +71,7 @@ export default function ServiceCapabilityList({ limit, highlightedSlug }: Servic
                 <div className="flex flex-col gap-3">
                   {service.benefits.map((benefit, idx) => (
                     <div key={idx} className="flex items-center text-white/60 text-sm">
-                      <CheckCircle2 className="w-4 h-4 text-white/30 mr-3 flex-shrink-0" />
+                      <CheckCircle2 className="w-4 h-4 text-accent-cyan/70 mr-3 flex-shrink-0" />
                       {benefit}
                     </div>
                   ))}
@@ -87,7 +87,7 @@ export default function ServiceCapabilityList({ limit, highlightedSlug }: Servic
                   <div className="flex flex-col gap-3">
                     {service.benefits.map((benefit, idx) => (
                       <div key={idx} className="flex items-center text-white/60 text-sm">
-                        <CheckCircle2 className="w-4 h-4 text-white/30 mr-3 flex-shrink-0" />
+                        <CheckCircle2 className="w-4 h-4 text-accent-cyan/70 mr-3 flex-shrink-0" />
                         {benefit}
                       </div>
                     ))}

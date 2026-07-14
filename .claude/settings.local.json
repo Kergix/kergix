@@ -2,7 +2,8 @@
   "permissions": {
     "allow": [
       "WebFetch(domain:preview.themeforest.net)",
-      "WebSearch"
+      "WebSearch",
+      "Bash(NODE_PATH=node_modules node /private/tmp/claude-501/-Users-aaa-Documents-personal-kergix/b3ae94fc-4aed-4544-a553-8706998d70b9/scratchpad/recolor-laptop.js public/hero-laptop-gray-tinted.png public/hero-laptop-cyan.png)"
     ]
   }
 }

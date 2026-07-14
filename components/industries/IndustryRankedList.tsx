@@ -39,7 +39,7 @@ export default function IndustryRankedList({ limit }: IndustryRankedListProps) {
           <Link
             key={ind.slug}
             href={`/industries/${ind.slug}`}
-            className="group flex flex-col rounded-2xl bg-white/5 border border-white/10 hover:border-white/30 transition-all cursor-pointer relative overflow-hidden shadow-lg hover:shadow-[0_0_30px_rgba(255,255,255,0.1)] backdrop-blur-sm"
+            className="group flex flex-col rounded-2xl bg-white/5 border border-white/10 hover:border-accent-cyan/40 transition-all cursor-pointer relative overflow-hidden shadow-lg hover:shadow-[0_0_30px_rgba(0,230,250,0.12)] backdrop-blur-sm"
           >
             {/* Top Image Banner */}
             <div className="w-full h-48 relative overflow-hidden">
@@ -56,7 +56,7 @@ export default function IndustryRankedList({ limit }: IndustryRankedListProps) {
 
             <div className="flex flex-col gap-4 p-6 pt-0 relative z-10 -mt-6">
               {/* Icon wrap */}
-              <div className="p-3 bg-white/10 backdrop-blur-md rounded-xl border border-white/20 text-white group-hover:bg-white group-hover:text-bg-primary transition-colors duration-500 w-fit shadow-xl">
+              <div className="p-3 bg-white/10 backdrop-blur-md rounded-xl border border-white/20 text-white group-hover:bg-accent-cyan-bright group-hover:text-bg-primary transition-colors duration-500 w-fit shadow-xl">
                 {renderMiniIcon(ind.iconName)}
               </div>
 
@@ -74,7 +74,7 @@ export default function IndustryRankedList({ limit }: IndustryRankedListProps) {
               </p>
 
               {/* View detail indicator */}
-              <div className="mt-4 flex items-center gap-1.5 text-white/50 group-hover:text-white transition-colors text-xs font-bold font-heading">
+              <div className="mt-4 flex items-center gap-1.5 text-white/50 group-hover:text-accent-cyan-bright transition-colors text-xs font-bold font-heading">
                 <span>View Solution Architecture</span>
                 <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
               </div>

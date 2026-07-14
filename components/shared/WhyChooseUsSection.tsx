@@ -26,8 +26,8 @@ const cardsData = [
               key={i}
               animate={{
                 y: [0, -8, 0],
-                borderColor: "rgba(255,255,255,0.9)",
-                boxShadow: "0 0 20px rgba(255,255,255,0.2)"
+                borderColor: "rgba(0,230,250,0.9)",
+                boxShadow: "0 0 20px rgba(0,230,250,0.3)"
               }}
               transition={{ duration: 1.5, repeat: Infinity, delay: i * 0.1, ease: "easeInOut" }}
               className="w-12 h-12 rounded-full border-2 bg-bg-secondary flex items-center justify-center relative overflow-hidden"
@@ -62,7 +62,7 @@ const cardsData = [
         <motion.div
           animate={{ x: [0, 3, 0], opacity: 1 }}
           transition={{ duration: 2, repeat: Infinity, delay: 0.2, ease: "easeInOut" }}
-          className="rounded-2xl rounded-tr-sm p-3 border w-fit self-end shadow-[0_0_20px_rgba(255,255,255,0.15)] bg-white/10 border-white/40"
+          className="rounded-2xl rounded-tr-sm p-3 border w-fit self-end shadow-[0_0_20px_rgba(0,230,250,0.25)] bg-accent-cyan/15 border-accent-cyan/40"
         >
           <span className="text-[10px] text-white font-medium leading-tight block">
             Want feedback before next step?
@@ -90,15 +90,15 @@ const cardsData = [
                 transition={{ duration: 2.5, repeat: Infinity, delay: i * 0.1, ease: "easeInOut" }}
                 className="w-full max-w-[8px] rounded-t-sm relative group"
                 style={{
-                  backgroundColor: isHighlighted ? "rgba(255,255,255,1)" : "rgba(255,255,255,0.15)",
-                  boxShadow: isHighlighted ? "0 0 15px rgba(255,255,255,0.5)" : "none"
+                  backgroundColor: isHighlighted ? "rgba(0,230,250,1)" : "rgba(255,255,255,0.15)",
+                  boxShadow: isHighlighted ? "0 0 15px rgba(0,230,250,0.6)" : "none"
                 }}
               >
                 {i === 8 && (
                   <motion.div 
                     animate={{ y: [0, -5, 0] }}
                     transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                    className="absolute -top-6 left-1/2 -translate-x-1/2 bg-white text-bg-primary text-[8px] font-bold px-1.5 py-0.5 rounded shadow-[0_0_10px_rgba(255,255,255,0.5)] whitespace-nowrap z-10"
+                    className="absolute -top-6 left-1/2 -translate-x-1/2 bg-accent-cyan-bright text-bg-primary text-[8px] font-bold px-1.5 py-0.5 rounded shadow-[0_0_10px_rgba(0,230,250,0.6)] whitespace-nowrap z-10"
                   >
                     +342%
                   </motion.div>
@@ -128,21 +128,21 @@ const cardsData = [
               className="absolute w-full flex justify-end items-center"
               style={{ transform: `rotate(${deg}deg)` }}
             >
-              <div className="w-[45%] h-[1px] bg-gradient-to-r from-transparent to-white/40" />
+              <div className="w-[45%] h-[1px] bg-gradient-to-r from-transparent to-accent-cyan/40" />
               {/* Outer nodes */}
               <div className="relative">
                 <motion.div 
                   animate={{ scale: [1, 1.2, 1] }}
                   transition={{ duration: 1.5, repeat: Infinity, delay: i * 0.2 }}
-                  className="w-2.5 h-2.5 rounded-full flex items-center justify-center bg-white shadow-[0_0_15px_rgba(255,255,255,0.8)]" 
+                  className="w-2.5 h-2.5 rounded-full flex items-center justify-center bg-accent-cyan-bright shadow-[0_0_15px_rgba(0,230,250,0.8)]" 
                 />
               </div>
             </div>
           ))}
         </motion.div>
         {/* Central Core */}
-        <div className="w-16 h-16 rounded-2xl border z-10 flex items-center justify-center bg-white/10 border-white/40 shadow-[0_0_30px_rgba(255,255,255,0.3)] backdrop-blur-md">
-          <Box className="w-7 h-7 text-white" />
+        <div className="w-16 h-16 rounded-2xl border z-10 flex items-center justify-center bg-accent-cyan/10 border-accent-cyan/40 shadow-[0_0_30px_rgba(0,230,250,0.35)] backdrop-blur-md">
+          <Box className="w-7 h-7 text-accent-cyan-bright" />
         </div>
       </div>
     ),
@@ -179,7 +179,7 @@ const cardsData = [
                     opacity: isHighlighted ? 1 : 0.3,
                     y: isHighlighted ? -2 : 0
                   }}
-                  className={`text-[8px] md:text-[10px] font-bold tracking-wider uppercase whitespace-nowrap transition-colors duration-500 ${isHighlighted ? 'text-white drop-shadow-[0_0_8px_rgba(255,255,255,0.8)]' : 'text-white/50'}`}
+                  className={`text-[8px] md:text-[10px] font-bold tracking-wider uppercase whitespace-nowrap transition-colors duration-500 ${isHighlighted ? 'text-accent-cyan-bright drop-shadow-[0_0_8px_rgba(0,230,250,0.8)]' : 'text-white/50'}`}
                 >
                   {step.label}
                 </motion.span>
@@ -187,15 +187,15 @@ const cardsData = [
                 <motion.div
                   animate={{
                     opacity: isHighlighted ? 1 : 0.2,
-                    boxShadow: isHighlighted ? "0 0 15px rgba(255,255,255,0.6)" : "none",
+                    boxShadow: isHighlighted ? "0 0 15px rgba(0,230,250,0.6)" : "none",
                   }}
                   transition={{ duration: 0.4 }}
-                  className={`h-2 rounded-full relative w-full ${isHighlighted ? 'bg-white' : 'bg-white/20'}`}
+                  className={`h-2 rounded-full relative w-full ${isHighlighted ? 'bg-accent-cyan' : 'bg-white/20'}`}
                 >
                   {isHighlighted && (
                     <motion.div 
                       layoutId="timeline-indicator"
-                      className="absolute -top-1 -right-1 w-4 h-4 bg-white rounded-full shadow-[0_0_15px_white] flex items-center justify-center border-2 border-bg-primary" 
+                      className="absolute -top-1 -right-1 w-4 h-4 bg-accent-cyan-bright rounded-full shadow-[0_0_15px_rgba(0,230,250,0.9)] flex items-center justify-center border-2 border-bg-primary" 
                     />
                   )}
                 </motion.div>
@@ -234,9 +234,9 @@ export default function WhyChooseUsSection() {
           cursorRadius={340}
           sparkle={false}
           waveAmplitude={0}
-          gradientFrom="rgba(255, 255, 255, 0.35)"
-          gradientTo="rgba(255, 255, 255, 0.1)"
-          glowColor="rgba(255, 255, 255, 0.15)"
+          gradientFrom="rgba(0, 230, 250, 0.35)"
+          gradientTo="rgba(0, 130, 170, 0.12)"
+          glowColor="rgba(0, 230, 250, 0.22)"
         />
       </div>
       {/* Legibility wash */}
@@ -248,7 +248,7 @@ export default function WhyChooseUsSection() {
         <div className="flex flex-col items-center text-center">
           <h2 className="text-4xl md:text-5xl font-heading font-medium tracking-tight text-white/50 leading-tight">
             Why Companies <br />
-            Choose <span className="text-white font-bold drop-shadow-[0_0_20px_rgba(255,255,255,0.2)]">Kergix</span>
+            Choose <span className="text-accent-cyan-bright font-bold drop-shadow-[0_0_20px_rgba(0,230,250,0.35)]">Kergix</span>
           </h2>
         </div>
 
@@ -263,9 +263,9 @@ export default function WhyChooseUsSection() {
                 onMouseEnter={() => setIsHovered(card.id)}
                 onMouseLeave={() => setIsHovered(null)}
                 animate={{
-                  backgroundColor: isActive ? "rgba(255, 255, 255, 0.08)" : "rgba(255, 255, 255, 0.02)",
-                  borderColor: isActive ? "rgba(255, 255, 255, 0.2)" : "rgba(255, 255, 255, 0.05)",
-                  boxShadow: isActive ? "0 20px 40px -10px rgba(0,0,0,0.5), 0 0 20px rgba(255,255,255,0.05)" : "0 0 0 0 rgba(0,0,0,0)",
+                  backgroundColor: isActive ? "rgba(0, 230, 250, 0.05)" : "rgba(255, 255, 255, 0.02)",
+                  borderColor: isActive ? "rgba(0, 230, 250, 0.3)" : "rgba(255, 255, 255, 0.05)",
+                  boxShadow: isActive ? "0 20px 40px -10px rgba(0,0,0,0.5), 0 0 20px rgba(0,230,250,0.08)" : "0 0 0 0 rgba(0,0,0,0)",
                   y: isActive ? -5 : 0,
                 }}
                 transition={{ duration: 0.5, ease: "easeOut" }}
@@ -279,7 +279,7 @@ export default function WhyChooseUsSection() {
                       animate={{ opacity: 1, x: "100%" }}
                       exit={{ opacity: 0 }}
                       transition={{ duration: 1.5, ease: "easeInOut" }}
-                      className="absolute inset-0 w-[200%] bg-gradient-to-r from-transparent via-white/5 to-transparent skew-x-12 pointer-events-none"
+                      className="absolute inset-0 w-[200%] bg-gradient-to-r from-transparent via-accent-cyan/5 to-transparent skew-x-12 pointer-events-none"
                     />
                   )}
                 </AnimatePresence>

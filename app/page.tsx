@@ -40,9 +40,9 @@ export default function HomePage() {
             cursorRadius={340}
             sparkle={false}
             waveAmplitude={0}
-            gradientFrom="rgba(255, 255, 255, 0.35)"
-            gradientTo="rgba(255, 255, 255, 0.1)"
-            glowColor="rgba(255, 255, 255, 0.15)"
+            gradientFrom="rgba(0, 230, 250, 0.35)"
+            gradientTo="rgba(0, 130, 170, 0.12)"
+            glowColor="rgba(0, 230, 250, 0.22)"
           />
         </div>
         {/* Legibility wash */}
@@ -50,7 +50,7 @@ export default function HomePage() {
 
         <div className="max-w-7xl mx-auto flex flex-col gap-12 relative z-10">
           <div className="flex flex-col gap-4 text-center items-center">
-            <span className="text-white/60 font-heading text-xs font-extrabold uppercase tracking-widest">
+            <span className="text-accent-cyan font-heading text-xs font-extrabold uppercase tracking-widest">
               Industries We Serve
             </span>
             <h2 className="text-3xl md:text-5xl font-heading font-extrabold text-white tracking-tight max-w-3xl leading-tight">
@@ -80,9 +80,9 @@ export default function HomePage() {
             cursorRadius={340}
             sparkle={false}
             waveAmplitude={0}
-            gradientFrom="rgba(255, 255, 255, 0.35)"
-            gradientTo="rgba(255, 255, 255, 0.1)"
-            glowColor="rgba(255, 255, 255, 0.15)"
+            gradientFrom="rgba(0, 230, 250, 0.35)"
+            gradientTo="rgba(0, 130, 170, 0.12)"
+            glowColor="rgba(0, 230, 250, 0.22)"
           />
         </div>
         {/* Legibility wash */}
@@ -90,7 +90,7 @@ export default function HomePage() {
 
         <div className="max-w-7xl mx-auto flex flex-col gap-12 relative z-10">
           <div className="flex flex-col gap-4 text-center items-center">
-            <span className="text-white/50 font-heading text-xs font-extrabold uppercase tracking-widest">
+            <span className="text-accent-cyan font-heading text-xs font-extrabold uppercase tracking-widest">
               Building With The Best Tools
             </span>
             <h2 className="text-3xl md:text-5xl font-heading font-extrabold text-white tracking-tight max-w-3xl leading-tight">
@@ -106,10 +106,10 @@ export default function HomePage() {
 
       {/* 10. Service capability list (all 8) */}
       <section className="py-24 px-4 md:px-8 bg-bg-primary relative overflow-hidden border-b border-white/10 group">
-        <SplashCursor COLOR="#888888" RAINBOW_MODE={false} />
+        <SplashCursor COLOR="#00A9CE" RAINBOW_MODE={false} />
         <div className="max-w-7xl mx-auto flex flex-col gap-16 relative z-10 pointer-events-none">
           <div className="flex flex-col gap-4 text-center items-center pointer-events-auto">
-            <span className="text-white/50 font-heading text-xs font-extrabold uppercase tracking-widest">
+            <span className="text-accent-cyan font-heading text-xs font-extrabold uppercase tracking-widest">
               Core Capabilities
             </span>
             <h2 className="text-3xl md:text-5xl font-heading font-extrabold text-white tracking-tight max-w-3xl leading-tight">

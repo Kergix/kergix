@@ -4,11 +4,11 @@ import Image from "next/image";
 export function KergixFooterLogo({ className = "" }: { className?: string }) {
   return (
     <Image
-      src="/kergix-logo-transparent.png"
+      src="/kergix-lockup.png"
       alt="Kergix Logo"
-      width={600}
-      height={200}
-      className={`object-contain select-none w-[220px] h-auto ${className}`}
+      width={720}
+      height={525}
+      className={`object-contain select-none w-[180px] h-auto ${className}`}
       priority
     />
   );

@@ -64,7 +64,7 @@ export default function HomePage() {
       </section>
 
       {/* 5. Why choose us */}
-      <WhyChooseUsSection />
+      <WhyChooseUsSection variant="light" />
 
 
 

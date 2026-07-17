@@ -70,6 +70,26 @@
   from { background-position: 200% 0; }
   to { background-position: -200% 0; }
 }
+/* Line chart draws itself, holds, then un-draws (paths use pathLength=1) */
+@keyframes draw-line {
+  0% { stroke-dashoffset: 1; }
+  45% { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: 0; }
+}
+/* Chart bars breathe between partial and full height */
+@keyframes bar-pulse {
+  0%, 100% { transform: scaleY(0.45); }
+  50% { transform: scaleY(1); }
+}
+/* Schematic callout line draws in once (pathLength=1) */
+@keyframes callout-draw {
+  from { stroke-dashoffset: 1; }
+  to { stroke-dashoffset: 0; }
+}
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
 @keyframes spin-slow {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }

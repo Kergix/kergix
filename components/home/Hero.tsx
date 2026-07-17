@@ -2,14 +2,17 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import DotField from "./DotField";
-import { 
-  AnimatedHeadline, 
-  AnimatedMobileHeadline, 
-  AnimatedLaptop, 
-  AnimatedCard 
+import HeroScreenLive from "./HeroScreenLive";
+import HeroCallouts from "./HeroCallouts";
+import ParallaxTilt from "./ParallaxTilt";
+import {
+  AnimatedHeadline,
+  AnimatedMobileHeadline,
+  AnimatedLaptop,
+  AnimatedCard
 } from "./HeroAnimations";
 
-function LaptopRender({ className = "" }: { className?: string }) {
+function LaptopRender({ className = "", callouts = false }: { className?: string; callouts?: boolean }) {
   return (
     <AnimatedLaptop className={`relative ${className}`}>
       <div className="absolute inset-4 rounded-[48px] bg-gradient-to-b from-[#17191C]/80 via-[#141619]/45 to-transparent blur-[56px] z-0" />
@@ -24,7 +27,10 @@ function LaptopRender({ className = "" }: { className?: string }) {
           sizes="(max-width: 1024px) 88vw, 620px"
           className="w-full h-auto select-none [filter:contrast(1.08)_brightness(1.05)] drop-shadow-[0_24px_48px_rgba(0,0,0,0.55)]"
         />
+        {/* Live dashboard projected onto the screen glass */}
+        <HeroScreenLive />
       </div>
+      {callouts && <HeroCallouts />}
     </AnimatedLaptop>
   );
 }
@@ -143,9 +149,11 @@ export default function Hero() {
           </AnimatedHeadline>
         </h1>
 
-        {/* Laptop — centered */}
+        {/* Laptop — centered, tilts toward the cursor */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[47%] max-w-[620px] z-20">
-          <LaptopRender />
+          <ParallaxTilt tilt={2.2}>
+            <LaptopRender callouts />
+          </ParallaxTilt>
         </div>
 
         {/* Capability list — mid left */}
@@ -154,7 +162,9 @@ export default function Hero() {
           delay={0.45}
           xOffset={-40}
         >
-          <CapabilityList />
+          <ParallaxTilt shift={8}>
+            <CapabilityList />
+          </ParallaxTilt>
         </AnimatedCard>
 
         {/* Get Started card — bottom left */}
@@ -163,7 +173,9 @@ export default function Hero() {
           delay={0.6}
           yOffset={40}
         >
-          <GetStartedCard />
+          <ParallaxTilt shift={-12}>
+            <GetStartedCard />
+          </ParallaxTilt>
         </AnimatedCard>
 
         {/* Info card — mid right */}
@@ -172,7 +184,9 @@ export default function Hero() {
           delay={0.45}
           xOffset={40}
         >
-          <InfoCard />
+          <ParallaxTilt shift={-10}>
+            <InfoCard />
+          </ParallaxTilt>
         </AnimatedCard>
 
         {/* Experience card — lower right */}
@@ -181,7 +195,9 @@ export default function Hero() {
           delay={0.6}
           yOffset={40}
         >
-          <ExperienceCard />
+          <ParallaxTilt shift={14}>
+            <ExperienceCard />
+          </ParallaxTilt>
         </AnimatedCard>
       </div>
 

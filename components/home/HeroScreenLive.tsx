@@ -145,6 +145,90 @@ function TickerRow({
   );
 }
 
+// Fixed pseudo-random latency samples (hardcoded so SSR and client match).
+const SCATTER: [number, number, boolean][] = [
+  [8, 44, false], [16, 40, false], [24, 46, false], [31, 38, false],
+  [38, 42, false], [45, 35, false], [52, 44, false], [60, 30, true],
+  [67, 41, false], [74, 37, false], [81, 44, false], [88, 26, true],
+  [95, 39, false], [102, 43, false], [109, 33, false], [116, 45, false],
+  [123, 40, false], [130, 22, true], [137, 42, false], [144, 36, false],
+  [151, 44, false], [158, 31, false], [165, 41, false], [172, 16, true],
+  [179, 43, false], [186, 38, false], [193, 44, false],
+];
+
+function LatencyScatter({ animate }: { animate: boolean }) {
+  return (
+    <div className="min-h-0 overflow-hidden rounded-md border border-white/10 bg-white/[0.03] p-1.5">
+      <div className="mb-0.5 flex items-center justify-between text-[6px] uppercase tracking-[0.18em] text-white/40">
+        <span>Latency</span>
+        <span className="text-white/30">p95 · 240ms</span>
+      </div>
+      <svg viewBox="0 0 200 56" preserveAspectRatio="none" className="h-[calc(100%-10px)] w-full">
+        <path d="M0 20 H200" stroke="rgba(255,255,255,0.18)" strokeWidth="0.6" strokeDasharray="3 3" />
+        <path d="M0 42 H200" stroke="rgba(255,255,255,0.08)" strokeWidth="0.6" />
+        {SCATTER.map(([x, y, hot], i) => (
+          <circle
+            key={i}
+            cx={x}
+            cy={y}
+            r={hot ? 2 : 1.3}
+            fill={hot ? "#EEF1F3" : "rgba(255,255,255,0.35)"}
+            style={
+              animate
+                ? { animation: `shimmer ${2.2 + (i % 3) * 0.7}s ease-in-out ${i * 0.13}s infinite` }
+                : undefined
+            }
+          />
+        ))}
+      </svg>
+    </div>
+  );
+}
+
+const FEED_EVENTS = [
+  ["deploy", "api-gateway v2.4.1 — success"],
+  ["scale", "compute pool +2 nodes"],
+  ["build", "web-client #1049 passed"],
+  ["backup", "pg-primary snapshot done"],
+  ["cert", "tls rotated · edge-eu"],
+  ["cache", "cdn purge · 214 objects"],
+  ["deploy", "data-pipeline v1.9.0 — success"],
+  ["alert", "p95 back under budget"],
+];
+const FEED_AGES = ["now", "9s", "18s", "27s"];
+
+function ActivityFeed({ animate }: { animate: boolean }) {
+  const [head, setHead] = useState(3);
+  useEffect(() => {
+    if (!animate) return;
+    const id = setInterval(() => setHead((h) => h + 1), 2400);
+    return () => clearInterval(id);
+  }, [animate]);
+
+  return (
+    <div className="min-h-0 overflow-hidden rounded-md border border-white/10 bg-white/[0.03] px-1.5 pt-1">
+      <div className="pb-0.5 text-[6px] uppercase tracking-[0.18em] text-white/40">Activity</div>
+      {FEED_AGES.map((age, i) => {
+        const [kind, detail] = FEED_EVENTS[(head - i + FEED_EVENTS.length * 100) % FEED_EVENTS.length];
+        return (
+          <div
+            key={`${head}-${i}`}
+            className="flex items-center gap-1 border-t border-white/6 py-[2.5px]"
+            style={i === 0 && animate ? { animation: "fade-in 0.5s ease-out" } : undefined}
+          >
+            <span className="text-[5.5px] text-white/30">▸</span>
+            <span className="w-[30px] shrink-0 font-heading text-[6px] font-bold uppercase tracking-[0.08em] text-white/60">
+              {kind}
+            </span>
+            <span className="min-w-0 flex-1 truncate text-[6.5px] text-white/45">{detail}</span>
+            <span className="shrink-0 text-[5.5px] tabular-nums text-white/25">{age}</span>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
 function Dashboard({ animate }: { animate: boolean }) {
   const clients = useTicker(2118, 9, 2400, animate);
   const deploys = useTicker(890, 3, 3100, animate);
@@ -281,7 +365,7 @@ function Dashboard({ animate }: { animate: boolean }) {
         </div>
 
         {/* Market-style service watch */}
-        <div className="min-h-0 flex-1 rounded-md border border-white/10 bg-white/[0.03] px-2 pt-1">
+        <div className="rounded-md border border-white/10 bg-white/[0.03] px-2 pt-1 pb-0.5">
           <div className="flex items-center justify-between pb-0.5 text-[6px] uppercase tracking-[0.18em] text-white/40">
             <span>Service Watch</span>
             <span className="flex gap-2">
@@ -292,6 +376,12 @@ function Dashboard({ animate }: { animate: boolean }) {
           <TickerRow name="API Gateway" base={1284} step={22} interval={1600} unit="rps" active={animate} />
           <TickerRow name="Cloud Compute" base={62.4} step={1.6} interval={2100} unit="%" active={animate} />
           <TickerRow name="Data Pipeline" base={845} step={14} interval={1900} unit="ev/s" active={animate} />
+        </div>
+
+        {/* Bottom row: latency scatter + live activity feed */}
+        <div className="grid min-h-0 flex-1 grid-cols-2 gap-1.5">
+          <LatencyScatter animate={animate} />
+          <ActivityFeed animate={animate} />
         </div>
       </div>
     </div>

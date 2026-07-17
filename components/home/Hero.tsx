@@ -8,17 +8,15 @@ import {
   AnimatedLaptop, 
   AnimatedCard 
 } from "./HeroAnimations";
-const HEADLINE_GRADIENT =
-  "linear-gradient(105deg, #FFFFFF 0%, #E6FBFE 30%, #7FE8F8 65%, #00C8E6 100%)";
 
 function LaptopRender({ className = "" }: { className?: string }) {
   return (
     <AnimatedLaptop className={`relative ${className}`}>
-      <div className="absolute inset-4 rounded-[48px] bg-gradient-to-b from-[#06333F]/70 via-[#082A34]/40 to-transparent blur-[56px] z-0" />
-      <div className="absolute inset-8 rounded-[48px] bg-[#06333F]/50 blur-[72px] z-0" />
+      <div className="absolute inset-4 rounded-[48px] bg-gradient-to-b from-[#17191C]/80 via-[#141619]/45 to-transparent blur-[56px] z-0" />
+      <div className="absolute inset-8 rounded-[48px] bg-[#17191C]/55 blur-[72px] z-0" />
       <div className="relative z-10">
         <Image
-          src="/hero-laptop-cyan.png"
+          src="/hero-laptop-platinum.png"
           alt="Kergix dashboard on a laptop showing performance and analytics"
           width={798}
           height={822}
@@ -39,7 +37,7 @@ function CapabilityList() {
       {capabilities.map((c) => (
         <span
           key={c}
-          className="text-text-secondary text-sm md:text-base transition-colors duration-200 hover:text-accent-cyan-bright cursor-default"
+          className="text-text-secondary text-sm md:text-base transition-colors duration-200 hover:text-white cursor-default"
         >
           {c}
         </span>
@@ -50,7 +48,7 @@ function CapabilityList() {
 
 function InfoCard() {
   return (
-    <div className="rounded-2xl border border-accent-cyan/15 bg-bg-secondary/40 backdrop-blur-sm p-5 w-full">
+    <div className="rounded-2xl border border-white/10 bg-bg-secondary/40 backdrop-blur-sm p-5 w-full">
       <p className="text-text-secondary text-sm leading-relaxed">
         Ready to build something exceptional? Let&apos;s bring your idea to life.
       </p>
@@ -60,8 +58,8 @@ function InfoCard() {
 
 function ExperienceCard() {
   return (
-    <div className="rounded-2xl border border-accent-cyan/15 bg-bg-secondary/40 backdrop-blur-sm px-5 py-4 flex items-center gap-3 w-full">
-      <span className="font-heading font-bold text-accent-cyan text-4xl leading-none">
+    <div className="rounded-2xl border border-white/10 bg-bg-secondary/40 backdrop-blur-sm px-5 py-4 flex items-center gap-3 w-full">
+      <span className="font-heading font-bold gradient-text text-4xl leading-none">
         5+
       </span>
       <span className="text-text-secondary text-sm leading-tight">
@@ -75,13 +73,13 @@ function ExperienceCard() {
 
 function GetStartedCard() {
   return (
-    <div className="rounded-2xl border border-accent-cyan/15 bg-bg-secondary/40 backdrop-blur-sm p-5 w-full">
+    <div className="rounded-2xl border border-white/10 bg-bg-secondary/40 backdrop-blur-sm p-5 w-full">
       <p className="text-text-secondary text-sm leading-relaxed mb-4">
         Partner with our expert engineers to create scalable, secure digital solutions.
       </p>
       <Link
         href="/contact"
-        className="inline-flex px-6 py-2.5 rounded-full bg-gradient-to-r from-accent-cyan-bright to-accent-cyan-mid text-[#03181E] font-heading font-bold text-sm hover:brightness-110 active:scale-[0.98] transition-all shadow-lg shadow-accent-cyan/25"
+        className="inline-flex px-6 py-2.5 rounded-full btn-metal font-heading font-bold text-sm"
       >
         Get Started
       </Link>
@@ -93,17 +91,20 @@ export default function Hero() {
   return (
     <section className="relative min-h-screen pt-28 md:pt-24 pb-16 px-4 md:px-8 bg-bg-primary overflow-hidden z-10 flex items-center">
       {/* Ambient glow */}
-      <div className="absolute right-[-8%] top-[-12%] w-[680px] h-[680px] rounded-full bg-[#052A35] blur-[150px] z-0 pointer-events-none" />
-      <div className="absolute right-[6%] top-[20%] w-[420px] h-[420px] rounded-full bg-[#04212A] blur-[120px] z-0 pointer-events-none" />
-      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[55%] h-[45%] rounded-full bg-[#052A35] blur-[100px] z-0 pointer-events-none" />
+      <div className="absolute right-[-8%] top-[-12%] w-[680px] h-[680px] rounded-full bg-[#15171A] blur-[150px] z-0 pointer-events-none" />
+      <div className="absolute right-[6%] top-[20%] w-[420px] h-[420px] rounded-full bg-[#121417] blur-[120px] z-0 pointer-events-none" />
+      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[55%] h-[45%] rounded-full bg-[#15171A] blur-[100px] z-0 pointer-events-none" />
 
       {/* Diagonal light beams from the top-right corner */}
-      <div className="absolute -top-24 right-[-12%] w-[860px] h-[190px] rotate-[-32deg] origin-top-right bg-gradient-to-l from-accent-cyan/12 via-accent-cyan/4 to-transparent blur-2xl z-0 pointer-events-none" />
-      <div className="absolute top-6 right-[-6%] w-[560px] h-[90px] rotate-[-32deg] origin-top-right bg-gradient-to-l from-accent-cyan-bright/10 via-accent-cyan/3 to-transparent blur-xl z-0 pointer-events-none" />
+      <div className="absolute -top-24 right-[-12%] w-[860px] h-[190px] rotate-[-32deg] origin-top-right bg-gradient-to-l from-white/10 via-white/3 to-transparent blur-2xl z-0 pointer-events-none" />
+      <div className="absolute top-6 right-[-6%] w-[560px] h-[90px] rotate-[-32deg] origin-top-right bg-gradient-to-l from-white/8 via-white/2 to-transparent blur-xl z-0 pointer-events-none" />
 
       {/* Horizon glow line beneath the laptop */}
-      <div className="absolute bottom-[7%] left-1/2 -translate-x-1/2 w-[72%] max-w-4xl h-px bg-gradient-to-r from-transparent via-accent-cyan/50 to-transparent z-0 pointer-events-none" />
-      <div className="absolute bottom-[5%] left-1/2 -translate-x-1/2 w-[56%] max-w-3xl h-16 bg-accent-cyan/8 blur-3xl rounded-full z-0 pointer-events-none" />
+      <div className="absolute bottom-[7%] left-1/2 -translate-x-1/2 w-[72%] max-w-4xl h-px bg-gradient-to-r from-transparent via-white/35 to-transparent z-0 pointer-events-none" />
+      <div className="absolute bottom-[5%] left-1/2 -translate-x-1/2 w-[56%] max-w-3xl h-16 bg-white/6 blur-3xl rounded-full z-0 pointer-events-none" />
+
+      {/* Film grain to keep the black from feeling flat */}
+      <div className="grain-overlay z-[1]" />
 
       {/* Interactive dot-field background */}
       <div className="pointer-events-none absolute inset-0 z-0">
@@ -115,9 +116,9 @@ export default function Hero() {
           cursorRadius={340}
           sparkle={false}
           waveAmplitude={0}
-          gradientFrom="rgba(0, 230, 250, 0.35)"
-          gradientTo="rgba(0, 130, 170, 0.12)"
-          glowColor="rgba(0, 230, 250, 0.22)"
+          gradientFrom="rgba(255, 255, 255, 0.35)"
+          gradientTo="rgba(255, 255, 255, 0.1)"
+          glowColor="rgba(255, 255, 255, 0.15)"
         />
       </div>
 
@@ -127,16 +128,14 @@ export default function Hero() {
         {/* Headlines */}
         <h1 className="absolute inset-0 z-10 font-heading font-bold tracking-[-0.03em] leading-[0.9] pointer-events-none">
           <AnimatedHeadline
-            className="absolute top-[12%] left-0 w-full text-center text-[clamp(4rem,10.5vw,10rem)] bg-clip-text text-transparent"
-            style={{ backgroundImage: HEADLINE_GRADIENT }}
+            className="absolute top-[12%] left-0 w-full text-center text-[clamp(4rem,10.5vw,10rem)] text-sheen"
             delay={0.05}
             yOffset={-50}
           >
             Your Vision
           </AnimatedHeadline>
           <AnimatedHeadline
-            className="absolute bottom-[12%] right-[2%] z-0 text-[clamp(4rem,10.5vw,10rem)] bg-clip-text text-transparent"
-            style={{ backgroundImage: HEADLINE_GRADIENT }}
+            className="absolute bottom-[12%] right-[2%] z-0 text-[clamp(4rem,10.5vw,10rem)] text-sheen"
             delay={0.15}
             yOffset={50}
           >
@@ -195,7 +194,7 @@ export default function Hero() {
           delay={0.05}
           yOffset={-30}
         >
-          <span className="block bg-clip-text text-transparent" style={{ backgroundImage: HEADLINE_GRADIENT }}>
+          <span className="block text-sheen">
             Your Vision
           </span>
         </AnimatedMobileHeadline>
@@ -207,7 +206,7 @@ export default function Hero() {
           delay={0.2}
           yOffset={30}
         >
-          <span className="block bg-clip-text text-transparent" style={{ backgroundImage: HEADLINE_GRADIENT }}>
+          <span className="block text-sheen">
             Our Code
           </span>
         </AnimatedMobileHeadline>

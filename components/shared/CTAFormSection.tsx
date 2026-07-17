@@ -51,7 +51,7 @@ export default function CTAFormSection() {
     `w-full bg-[#070707] text-white placeholder:text-white/30 px-5 py-4 rounded-2xl border transition-all text-sm focus:outline-none ${
       hasError
         ? "border-red-500/50 focus:border-red-500 focus:ring-1 focus:ring-red-500/20"
-        : "border-white/10 focus:border-accent-cyan/50 focus:ring-1 focus:ring-accent-cyan/20"
+        : "border-white/10 focus:border-white/35 focus:ring-1 focus:ring-white/15"
     }`;
 
   return (
@@ -65,7 +65,7 @@ export default function CTAFormSection() {
           {/* Left Column: Premium Copy & Metadata */}
           <div className="lg:col-span-5 flex flex-col gap-10">
             <div className="flex flex-col gap-4">
-              <span className="text-accent-cyan font-heading text-xs font-bold uppercase tracking-widest">
+              <span className="text-silver-mid font-heading text-xs font-bold uppercase tracking-widest">
                 Get in touch
               </span>
               <h2 className="text-4xl md:text-5xl font-heading font-extrabold text-white tracking-tight leading-[1.1]">
@@ -80,13 +80,13 @@ export default function CTAFormSection() {
             <div className="pt-6 border-t border-white/10 max-w-md">
               <div className="flex items-center gap-5 p-6 rounded-3xl bg-[#0a0a0a] border border-white/10 hover:border-white/20 transition-all group/card">
                 <div className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0 group-hover/card:bg-white/10 transition-colors">
-                  <Mail className="w-5 h-5 text-accent-cyan group-hover/card:text-accent-cyan-bright transition-colors" />
+                  <Mail className="w-5 h-5 text-silver group-hover/card:text-white transition-colors" />
                 </div>
                 <div>
                   <h4 className="text-white/40 text-[10px] font-bold uppercase tracking-widest">Client &amp; Project Inquiries</h4>
                   <a
                     href="mailto:contact@kergix.com"
-                    className="text-white text-base font-semibold mt-0.5 hover:text-accent-cyan-bright transition-colors block"
+                    className="text-white text-base font-semibold mt-0.5 hover:text-white/80 transition-colors block"
                   >
                     contact@kergix.com
                   </a>
@@ -99,12 +99,12 @@ export default function CTAFormSection() {
           <div className="lg:col-span-7">
             <div className="bg-[#0a0a0a] border border-white/10 p-8 md:p-10 lg:p-12 rounded-[2.5rem] relative overflow-hidden shadow-2xl shadow-black/50">
               {/* Subtle inner glow */}
-              <div className="absolute -top-12 -right-12 w-48 h-48 bg-accent-cyan/5 rounded-full blur-[80px] pointer-events-none" />
+              <div className="absolute -top-12 -right-12 w-48 h-48 bg-white/5 rounded-full blur-[80px] pointer-events-none" />
 
               {submitStatus === "success" ? (
                 <div className="flex flex-col items-center justify-center text-center py-16 gap-6">
-                  <div className="w-16 h-16 rounded-full bg-accent-cyan/10 border border-accent-cyan/25 flex items-center justify-center">
-                    <CheckCircle2 className="w-8 h-8 text-accent-cyan-bright" />
+                  <div className="w-16 h-16 rounded-full bg-white/8 border border-white/15 flex items-center justify-center">
+                    <CheckCircle2 className="w-8 h-8 text-white" />
                   </div>
                   <div className="flex flex-col gap-2">
                     <h3 className="text-2xl font-heading font-bold text-white tracking-tight">
@@ -199,7 +199,7 @@ export default function CTAFormSection() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full sm:w-fit px-8 py-4 rounded-full bg-gradient-to-r from-accent-cyan-bright to-accent-cyan-mid text-[#03181E] font-heading font-extrabold text-sm hover:brightness-110 active:scale-[0.98] transition-all flex items-center justify-center gap-2.5 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed group mt-2"
+                    className="w-full sm:w-fit px-8 py-4 rounded-full btn-metal font-heading font-extrabold text-sm flex items-center justify-center gap-2.5 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed group mt-2"
                   >
                     {isSubmitting ? (
                       <>

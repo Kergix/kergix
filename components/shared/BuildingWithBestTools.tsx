@@ -72,7 +72,7 @@ export default function BuildingWithBestTools() {
     return currentTools.map((tool) => ({
       title: tool.name,
       node: (
-        <div className="w-48 h-[160px] rounded-2xl bg-[#0a0a0a] border border-white/10 flex flex-col items-center justify-center text-center gap-5 flex-none mx-3 transition-colors hover:bg-[#0a1216] hover:border-accent-cyan/25">
+        <div className="w-48 h-[160px] rounded-2xl bg-[#0a0a0a] border border-white/10 flex flex-col items-center justify-center text-center gap-5 flex-none mx-3 transition-colors hover:bg-[#111] hover:border-white/20">
           {/* Tech icon wrap without neon borders, just clean layout */}
           <div className="flex items-center justify-center">
             {tool.icon}
@@ -95,7 +95,7 @@ export default function BuildingWithBestTools() {
             onClick={() => setActiveTab(cat)}
             className={`px-6 py-4 rounded-t-xl font-heading font-medium text-xs md:text-sm whitespace-nowrap transition-all border-b-2 focus:outline-none ${
               activeTab === cat
-                ? "border-accent-cyan text-accent-cyan-bright bg-accent-cyan/5"
+                ? "border-silver-bright text-white bg-white/5"
                 : "border-transparent text-white/40 hover:text-white/70 hover:bg-white/5"
             }`}
           >

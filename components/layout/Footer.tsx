@@ -73,7 +73,7 @@ export default function Footer() {
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="text-white/60 hover:text-accent-cyan-bright text-sm transition-colors"
+                    className="text-white/60 hover:text-white text-sm transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -90,7 +90,7 @@ export default function Footer() {
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="text-white/60 hover:text-accent-cyan-bright text-sm transition-colors"
+                    className="text-white/60 hover:text-white text-sm transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -107,7 +107,7 @@ export default function Footer() {
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="text-white/60 hover:text-accent-cyan-bright text-sm transition-colors"
+                    className="text-white/60 hover:text-white text-sm transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -124,7 +124,7 @@ export default function Footer() {
                 <li key={item.label}>
                   <a
                     href={item.href}
-                    className="text-white/60 hover:text-accent-cyan-bright text-sm transition-colors break-all"
+                    className="text-white/60 hover:text-white text-sm transition-colors break-all"
                   >
                     {item.label}
                   </a>
@@ -141,10 +141,10 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row items-center justify-between gap-6 pt-8 text-xs text-white/40">
           <div className="flex items-center gap-6">
             <span>&copy; {currentYear} Kergix. All rights reserved.</span>
-            <Link href="/privacy" className="hover:text-accent-cyan-bright transition-colors">
+            <Link href="/privacy" className="hover:text-white transition-colors">
               Privacy Policy
             </Link>
-            <Link href="/terms" className="hover:text-accent-cyan-bright transition-colors">
+            <Link href="/terms" className="hover:text-white transition-colors">
               Terms of Service
             </Link>
           </div>
@@ -155,7 +155,7 @@ export default function Footer() {
               href="https://linkedin.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2.5 rounded-full border border-white/10 text-white/50 hover:text-accent-cyan-bright hover:border-accent-cyan/40 hover:bg-accent-cyan/5 transition-all"
+              className="p-2.5 rounded-full border border-white/10 text-white/50 hover:text-white hover:border-white/30 hover:bg-white/5 transition-all"
               aria-label="LinkedIn"
             >
               <LinkedinIcon className="w-4 h-4" />
@@ -164,7 +164,7 @@ export default function Footer() {
               href="https://twitter.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2.5 rounded-full border border-white/10 text-white/50 hover:text-accent-cyan-bright hover:border-accent-cyan/40 hover:bg-accent-cyan/5 transition-all"
+              className="p-2.5 rounded-full border border-white/10 text-white/50 hover:text-white hover:border-white/30 hover:bg-white/5 transition-all"
               aria-label="Twitter"
             >
               <TwitterIcon className="w-4 h-4" />
@@ -173,7 +173,7 @@ export default function Footer() {
               href="https://instagram.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2.5 rounded-full border border-white/10 text-white/50 hover:text-accent-cyan-bright hover:border-accent-cyan/40 hover:bg-accent-cyan/5 transition-all"
+              className="p-2.5 rounded-full border border-white/10 text-white/50 hover:text-white hover:border-white/30 hover:bg-white/5 transition-all"
               aria-label="Instagram"
             >
               <InstagramIcon className="w-4 h-4" />

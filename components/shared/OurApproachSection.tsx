@@ -18,14 +18,14 @@ export default function OurApproachSection() {
       <div className="max-w-7xl mx-auto">
         {/* Dark elevated card */}
         <div className="bg-[#0a0a0a] border border-white/10 rounded-3xl p-8 md:p-12 lg:p-16 relative overflow-hidden">
-          {/* Subtle internal cyan glow */}
-          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-accent-cyan/5 rounded-full blur-[100px] pointer-events-none" />
+          {/* Subtle internal silver glow */}
+          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-white/5 rounded-full blur-[100px] pointer-events-none" />
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center relative z-10">
             {/* Left: Text content */}
             <div className="lg:col-span-6 flex flex-col gap-8">
               <div className="flex flex-col gap-4">
-                <span className="text-accent-cyan font-heading text-xs font-extrabold uppercase tracking-widest">
+                <span className="text-silver-mid font-heading text-xs font-extrabold uppercase tracking-widest">
                   Our Methodology
                 </span>
                 <h2 className="text-3xl md:text-5xl font-heading font-extrabold text-white tracking-tight leading-tight">
@@ -41,7 +41,7 @@ export default function OurApproachSection() {
                 {steps.map((step, idx) => (
                   <div key={idx} className="flex items-start gap-4">
                     <div className="mt-1 flex-none">
-                      <CheckCircle2 className="w-5 h-5 text-accent-cyan" />
+                      <CheckCircle2 className="w-5 h-5 text-silver" />
                     </div>
                     <div className="flex flex-col">
                       <h4 className="text-white font-heading font-semibold">{step.title}</h4>
@@ -53,7 +53,7 @@ export default function OurApproachSection() {
 
               <Link
                 href="/contact"
-                className="w-fit mt-4 px-8 py-4 rounded-full bg-gradient-to-r from-accent-cyan-bright to-accent-cyan-mid text-[#03181E] font-heading font-bold text-sm hover:brightness-110 active:scale-[0.98] transition-all flex items-center gap-3 group shadow-[0_0_20px_rgba(0,230,250,0.2)]"
+                className="w-fit mt-4 px-8 py-4 rounded-full btn-metal font-heading font-bold text-sm flex items-center gap-3 group"
               >
                 <span>Start Your Project</span>
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
@@ -77,7 +77,7 @@ export default function OurApproachSection() {
 
                 {/* Floating stat badge 1 */}
                 <div className="absolute -top-8 -right-4 bg-[#111] border border-white/10 rounded-2xl px-6 py-5 flex flex-col shadow-2xl z-20 backdrop-blur-md">
-                  <span className="text-2xl md:text-4xl font-heading font-extrabold text-accent-cyan-bright">
+                  <span className="text-2xl md:text-4xl font-heading font-extrabold gradient-text">
                     99.9%
                   </span>
                   <span className="text-xs text-white/50 mt-1 uppercase tracking-wider font-semibold">Uptime SLA</span>
@@ -85,8 +85,8 @@ export default function OurApproachSection() {
 
                 {/* Floating stat badge 2 */}
                 <div className="absolute -bottom-10 -left-6 bg-[#111] border border-white/10 rounded-2xl px-6 py-5 flex items-center gap-4 shadow-2xl z-20 backdrop-blur-md">
-                  <div className="w-12 h-12 rounded-full bg-accent-cyan/10 flex items-center justify-center">
-                    <CheckCircle2 className="w-6 h-6 text-accent-cyan-bright" />
+                  <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center">
+                    <CheckCircle2 className="w-6 h-6 text-white" />
                   </div>
                   <div className="flex flex-col">
                     <span className="text-xl font-heading font-extrabold text-white">Zero</span>

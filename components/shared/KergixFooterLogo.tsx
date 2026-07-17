@@ -4,7 +4,7 @@ import Image from "next/image";
 export function KergixFooterLogo({ className = "" }: { className?: string }) {
   return (
     <Image
-      src="/kergix-lockup.png"
+      src="/kergix-lockup-mono.png"
       alt="Kergix Logo"
       width={720}
       height={525}

@@ -16,6 +16,12 @@
   --color-metal-mid: #8A959C;
   --color-metal-dark: #4A5456;
 
+  /* Silver ramp — monochrome accent system (877C-inspired) */
+  --color-silver-bright: #EEF1F3;
+  --color-silver: #C9CED4;
+  --color-silver-mid: #999999;
+  --color-graphite: #55595E;
+
   --color-text-primary: #F5F9FA;
   --color-text-secondary: #A7B4B8;
   --color-text-muted: #6B7679;
@@ -57,8 +63,12 @@
   50% { transform: translateY(-15px) rotate(-1.5deg) scale(1.02); }
 }
 @keyframes pulse-glow {
-  0%, 100% { opacity: 0.4; filter: drop-shadow(0 0 15px rgba(0, 210, 240, 0.3)); }
-  50% { opacity: 0.7; filter: drop-shadow(0 0 30px rgba(0, 210, 240, 0.6)); }
+  0%, 100% { opacity: 0.4; filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.2)); }
+  50% { opacity: 0.7; filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.4)); }
+}
+@keyframes sheen {
+  from { background-position: 200% 0; }
+  to { background-position: -200% 0; }
 }
 @keyframes spin-slow {
   from { transform: rotate(0deg); }
@@ -78,8 +88,8 @@ body {
 }
 
 ::selection {
-  background-color: rgba(0, 210, 240, 0.3);
-  color: #F5F9FA;
+  background-color: rgba(220, 224, 228, 0.85);
+  color: #05070A;
 }
 
 /* ── Scrollbar ── */
@@ -115,9 +125,9 @@ body {
   max-height: 900px;
   background: radial-gradient(
     ellipse at center,
-    rgba(0, 210, 240, 0.12) 0%,
-    rgba(0, 130, 170, 0.06) 35%,
-    rgba(0, 210, 240, 0.02) 55%,
+    rgba(255, 255, 255, 0.06) 0%,
+    rgba(255, 255, 255, 0.03) 35%,
+    rgba(255, 255, 255, 0.01) 55%,
   );
   z-index: 0;
   pointer-events: none;
@@ -136,9 +146,9 @@ body {
   max-height: 1000px;
   background: radial-gradient(
     ellipse at center,
-    rgba(0, 130, 170, 0.10) 0%,
-    rgba(0, 210, 240, 0.05) 40%,
-    rgba(0, 210, 240, 0.015) 60%,
+    rgba(255, 255, 255, 0.05) 0%,
+    rgba(255, 255, 255, 0.025) 40%,
+    rgba(255, 255, 255, 0.008) 60%,
   );
   z-index: 0;
   pointer-events: none;
@@ -198,6 +208,55 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+/* ── Brushed-metal CTA button ── */
+.btn-metal {
+  background: linear-gradient(180deg, #F5F7F8 0%, #D9DDE1 48%, #B7BDC4 100%);
+  color: #0B0D10;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    0 8px 24px rgba(0, 0, 0, 0.45);
+  transition: filter 0.2s ease, transform 0.15s ease;
+}
+.btn-metal:hover {
+  filter: brightness(1.07);
+}
+.btn-metal:active {
+  transform: scale(0.98);
+}
+
+/* ── Animated metallic sheen for display headlines ── */
+.text-sheen {
+  background-image: linear-gradient(
+    110deg,
+    #F8FAFB 0%,
+    #D4D9DE 28%,
+    #878E96 50%,
+    #D4D9DE 72%,
+    #F8FAFB 100%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .text-sheen {
+    animation: sheen 10s linear infinite;
+  }
+}
+
+/* ── Film-grain overlay (keeps large blacks from feeling flat) ── */
+.grain-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 160px 160px;
 }
 
 /* ── Silver dot bullet ── */

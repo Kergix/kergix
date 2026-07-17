@@ -149,9 +149,9 @@ export default function ServiceDetailsPaginated({
             cursorRadius={340}
             sparkle={false}
             waveAmplitude={0}
-            gradientFrom="rgba(0, 230, 250, 0.35)"
-            gradientTo="rgba(0, 130, 170, 0.12)"
-            glowColor="rgba(0, 230, 250, 0.22)"
+            gradientFrom="rgba(255, 255, 255, 0.35)"
+            gradientTo="rgba(255, 255, 255, 0.1)"
+            glowColor="rgba(255, 255, 255, 0.15)"
           />
         </div>
       )}
@@ -163,7 +163,7 @@ export default function ServiceDetailsPaginated({
         {/* Header */}
         <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
           <div className="flex flex-col gap-2">
-            <span className="font-heading text-xs font-extrabold uppercase tracking-[0.2em] text-accent-cyan">
+            <span className="font-heading text-xs font-extrabold uppercase tracking-[0.2em] text-silver-mid">
               Service Ecosystem
             </span>
             <h2 className="font-heading text-2xl font-extrabold tracking-tight text-text-primary md:text-3xl">
@@ -200,8 +200,8 @@ export default function ServiceDetailsPaginated({
               {/* Left column */}
               <div className="flex flex-col">
                 <motion.div variants={childVariants} className="flex items-center gap-4">
-                  <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-accent-cyan/25 bg-accent-cyan/10 backdrop-blur-sm">
-                    <Icon className="h-7 w-7 text-accent-cyan-bright" strokeWidth={1.5} />
+                  <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-white/12 bg-white/6 backdrop-blur-sm">
+                    <Icon className="h-7 w-7 text-silver-bright" strokeWidth={1.5} />
                   </div>
                   <h3 className="font-heading text-2xl font-bold leading-tight tracking-tight text-text-primary md:text-3xl">
                     {activeModule.title}
@@ -220,7 +220,7 @@ export default function ServiceDetailsPaginated({
                 <motion.div variants={childVariants} className="mt-8">
                   <Link
                     href={`/services/${activeModule.slug}`}
-                    className="group inline-flex w-fit items-center gap-2 rounded-full bg-gradient-to-r from-accent-cyan-bright to-accent-cyan-mid px-6 py-3 font-heading text-sm font-bold text-[#03181E] shadow-[0_0_20px_rgba(0,230,250,0.25)] transition-all hover:brightness-110 active:scale-[0.98]"
+                    className="group inline-flex w-fit items-center gap-2 rounded-full btn-metal px-6 py-3 font-heading text-sm font-bold"
                   >
                     <span>Start this module</span>
                     <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -234,10 +234,10 @@ export default function ServiceDetailsPaginated({
                 className="flex flex-col rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-md md:p-8"
               >
                 <div className="flex flex-col gap-4 border-b border-white/10 pb-6">
-                  <span className="font-heading text-xs font-extrabold uppercase tracking-[0.2em] text-accent-cyan">
+                  <span className="font-heading text-xs font-extrabold uppercase tracking-[0.2em] text-silver-mid">
                     Key Deliverables
                   </span>
-                  <span className="w-fit rounded-full border border-accent-cyan/30 bg-accent-cyan/10 px-4 py-1.5 font-heading text-sm font-bold text-accent-cyan-bright">
+                  <span className="w-fit rounded-full border border-white/20 bg-white/8 px-4 py-1.5 font-heading text-sm font-bold text-silver-bright">
                     {activeModule.deliverable || "Core System Delivery"}
                   </span>
                 </div>
@@ -245,7 +245,7 @@ export default function ServiceDetailsPaginated({
                 <ul className="mt-6 flex flex-col gap-4">
                   {activeModule.keyFeatures && activeModule.keyFeatures.map((feature) => (
                     <li key={feature} className="flex items-start gap-3">
-                      <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-accent-cyan" strokeWidth={1.75} />
+                      <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-silver" strokeWidth={1.75} />
                       <span className="text-sm font-medium leading-snug text-text-primary md:text-[15px]">
                         {feature}
                       </span>
@@ -279,8 +279,8 @@ export default function ServiceDetailsPaginated({
                 onClick={() => goTo(i)}
                 className={`h-1.5 rounded-full transition-all duration-300 ${
                   active
-                    ? "w-8 bg-accent-cyan"
-                    : "w-1.5 bg-white/25 hover:bg-accent-cyan/60"
+                    ? "w-8 bg-silver-bright"
+                    : "w-1.5 bg-white/25 hover:bg-white/50"
                 }`}
               />
             );

@@ -6,18 +6,31 @@ import Image from "next/image";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { motion } from "framer-motion";
 
-export default function OurApproachSection() {
+export default function OurApproachSection({
+  variant = "dark",
+}: {
+  variant?: "dark" | "light";
+}) {
   const steps = [
     { title: "Discovery & Strategy", desc: "Understanding your vision and aligning technology with business goals." },
     { title: "Architecture & Design", desc: "Crafting scalable blueprints and intuitive user experiences." },
     { title: "Agile Engineering", desc: "Iterative development with rigorous testing and continuous delivery." },
   ];
+  const light = variant === "light";
 
   return (
-    <section className="py-24 px-4 md:px-8 bg-bg-primary relative overflow-hidden border-b border-white/10">
+    <section
+      className={`py-24 px-4 md:px-8 relative overflow-hidden ${
+        light ? "bg-[#F4F6F8] border-y border-black/10" : "bg-bg-primary border-b border-white/10"
+      }`}
+    >
       <div className="max-w-7xl mx-auto">
-        {/* Dark elevated card */}
-        <div className="bg-[#0a0a0a] border border-white/10 rounded-3xl p-8 md:p-12 lg:p-16 relative overflow-hidden">
+        {/* Dark elevated card — floats on the light canvas when variant="light" */}
+        <div
+          className={`bg-[#0a0a0a] border border-white/10 rounded-3xl p-8 md:p-12 lg:p-16 relative overflow-hidden ${
+            light ? "shadow-[0_40px_80px_-32px_rgba(15,18,22,0.45)]" : ""
+          }`}
+        >
           {/* Subtle internal silver glow */}
           <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-white/5 rounded-full blur-[100px] pointer-events-none" />
 

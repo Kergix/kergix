@@ -30,6 +30,19 @@ function LaptopRender({ className = "", callouts = false }: { className?: string
         {/* Live dashboard projected onto the screen glass */}
         <HeroScreenLive />
       </div>
+      {/* Glossy stage-floor reflection */}
+      <div
+        aria-hidden
+        className="absolute top-[88%] left-0 right-0 h-[45%] z-0 pointer-events-none overflow-hidden opacity-[0.11] blur-[3px] [mask-image:linear-gradient(to_bottom,black_0%,transparent_62%)]"
+      >
+        <Image
+          src="/hero-laptop-platinum.png"
+          alt=""
+          width={798}
+          height={822}
+          className="w-full h-auto select-none [transform:scaleY(-1)]"
+        />
+      </div>
       {callouts && <HeroCallouts />}
     </AnimatedLaptop>
   );
@@ -98,16 +111,40 @@ export default function Hero() {
     <section className="relative min-h-screen pt-28 md:pt-24 pb-16 px-4 md:px-8 bg-bg-primary overflow-hidden z-10 flex items-center">
       {/* Ambient glow */}
       <div className="absolute right-[-8%] top-[-12%] w-[680px] h-[680px] rounded-full bg-[#15171A] blur-[150px] z-0 pointer-events-none" />
+      <div className="absolute left-[-10%] top-[-14%] w-[560px] h-[560px] rounded-full bg-[#15171A] blur-[150px] z-0 pointer-events-none" />
       <div className="absolute right-[6%] top-[20%] w-[420px] h-[420px] rounded-full bg-[#121417] blur-[120px] z-0 pointer-events-none" />
       <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[55%] h-[45%] rounded-full bg-[#15171A] blur-[100px] z-0 pointer-events-none" />
 
-      {/* Diagonal light beams from the top-right corner */}
-      <div className="absolute -top-24 right-[-12%] w-[860px] h-[190px] rotate-[-32deg] origin-top-right bg-gradient-to-l from-white/10 via-white/3 to-transparent blur-2xl z-0 pointer-events-none" />
-      <div className="absolute top-6 right-[-6%] w-[560px] h-[90px] rotate-[-32deg] origin-top-right bg-gradient-to-l from-white/8 via-white/2 to-transparent blur-xl z-0 pointer-events-none" />
-
-      {/* Horizon glow line beneath the laptop */}
+      {/* Stage floor — horizon line + light pool under the laptop */}
       <div className="absolute bottom-[7%] left-1/2 -translate-x-1/2 w-[72%] max-w-4xl h-px bg-gradient-to-r from-transparent via-white/35 to-transparent z-0 pointer-events-none" />
       <div className="absolute bottom-[5%] left-1/2 -translate-x-1/2 w-[56%] max-w-3xl h-16 bg-white/6 blur-3xl rounded-full z-0 pointer-events-none" />
+      <div className="absolute bottom-[1%] left-1/2 -translate-x-1/2 w-[44%] max-w-2xl h-24 bg-white/5 blur-2xl rounded-[100%] z-0 pointer-events-none" />
+
+      {/* House lights down — vignette pulls the eye to center stage */}
+      <div className="absolute inset-0 z-[1] pointer-events-none bg-[radial-gradient(115%_95%_at_50%_42%,transparent_42%,rgba(0,0,0,0.38)_78%,rgba(0,0,0,0.62)_100%)]" />
+
+      {/* Stage rig — spotlight cones from both top corners, ABOVE the vignette
+          so the house-lights can't swallow them. Right lamp leads, left follows. */}
+      <div
+        className="absolute inset-0 z-[2] pointer-events-none [filter:blur(18px)]"
+        style={{
+          background:
+            "conic-gradient(from 214deg at 88% -8%, transparent 0deg, rgba(255,255,255,0.06) 8deg, rgba(255,255,255,0.16) 14deg, rgba(255,255,255,0.06) 21deg, transparent 28deg)",
+          animation: "beam-breathe 9s ease-in-out infinite",
+        }}
+      />
+      <div
+        className="absolute inset-0 z-[2] pointer-events-none [filter:blur(18px)]"
+        style={{
+          background:
+            "conic-gradient(from 119deg at 12% -8%, transparent 0deg, rgba(255,255,255,0.05) 8deg, rgba(255,255,255,0.13) 14deg, rgba(255,255,255,0.05) 21deg, transparent 28deg)",
+          animation: "beam-breathe 11s ease-in-out 2.5s infinite",
+        }}
+      />
+
+      {/* Lamp hotspots at each cone origin */}
+      <div className="absolute -top-12 right-[7%] w-48 h-48 rounded-full bg-white/14 blur-3xl z-[2] pointer-events-none" />
+      <div className="absolute -top-12 left-[7%] w-40 h-40 rounded-full bg-white/11 blur-3xl z-[2] pointer-events-none" />
 
       {/* Film grain to keep the black from feeling flat */}
       <div className="grain-overlay z-[1]" />

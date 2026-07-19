@@ -26,7 +26,7 @@ export default function HomePage() {
       <ServiceQuickNav />
 
       {/* 3. Paginated module deep-dive viewer */}
-      <ServiceDetailsPaginated />
+      <ServiceDetailsPaginated variant="light" />
 
       {/* 4. Industries strip */}
       <section className="py-24 px-4 md:px-8 bg-bg-primary border-y border-white/10 relative overflow-hidden isolate">
@@ -102,7 +102,7 @@ export default function HomePage() {
       </section>
 
       {/* 9. Our approach */}
-      <OurApproachSection />
+      <OurApproachSection variant="light" />
 
       {/* 10. Service capability list (all 8) */}
       <section className="py-24 px-4 md:px-8 bg-bg-primary relative overflow-hidden border-b border-white/10 group">

@@ -6,26 +6,39 @@ import Image from "next/image";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { motion } from "framer-motion";
 
-export default function OurApproachSection() {
+export default function OurApproachSection({
+  variant = "dark",
+}: {
+  variant?: "dark" | "light";
+}) {
   const steps = [
     { title: "Discovery & Strategy", desc: "Understanding your vision and aligning technology with business goals." },
     { title: "Architecture & Design", desc: "Crafting scalable blueprints and intuitive user experiences." },
     { title: "Agile Engineering", desc: "Iterative development with rigorous testing and continuous delivery." },
   ];
+  const light = variant === "light";
 
   return (
-    <section className="py-24 px-4 md:px-8 bg-bg-primary relative overflow-hidden border-b border-white/10">
+    <section
+      className={`py-24 px-4 md:px-8 relative overflow-hidden ${
+        light ? "bg-[#F4F6F8] border-y border-black/10" : "bg-bg-primary border-b border-white/10"
+      }`}
+    >
       <div className="max-w-7xl mx-auto">
-        {/* Dark elevated card */}
-        <div className="bg-[#0a0a0a] border border-white/10 rounded-3xl p-8 md:p-12 lg:p-16 relative overflow-hidden">
-          {/* Subtle internal white glow instead of cyan */}
+        {/* Dark elevated card — floats on the light canvas when variant="light" */}
+        <div
+          className={`bg-[#0a0a0a] border border-white/10 rounded-3xl p-8 md:p-12 lg:p-16 relative overflow-hidden ${
+            light ? "shadow-[0_40px_80px_-32px_rgba(15,18,22,0.45)]" : ""
+          }`}
+        >
+          {/* Subtle internal silver glow */}
           <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-white/5 rounded-full blur-[100px] pointer-events-none" />
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center relative z-10">
             {/* Left: Text content */}
             <div className="lg:col-span-6 flex flex-col gap-8">
               <div className="flex flex-col gap-4">
-                <span className="text-white/50 font-heading text-xs font-extrabold uppercase tracking-widest">
+                <span className="text-silver-mid font-heading text-xs font-extrabold uppercase tracking-widest">
                   Our Methodology
                 </span>
                 <h2 className="text-3xl md:text-5xl font-heading font-extrabold text-white tracking-tight leading-tight">
@@ -41,7 +54,7 @@ export default function OurApproachSection() {
                 {steps.map((step, idx) => (
                   <div key={idx} className="flex items-start gap-4">
                     <div className="mt-1 flex-none">
-                      <CheckCircle2 className="w-5 h-5 text-white/40" />
+                      <CheckCircle2 className="w-5 h-5 text-silver" />
                     </div>
                     <div className="flex flex-col">
                       <h4 className="text-white font-heading font-semibold">{step.title}</h4>
@@ -53,7 +66,7 @@ export default function OurApproachSection() {
 
               <Link
                 href="/contact"
-                className="w-fit mt-4 px-8 py-4 rounded-full bg-white text-black font-heading font-bold text-sm hover:bg-gray-200 active:scale-[0.98] transition-all flex items-center gap-3 group shadow-[0_0_20px_rgba(255,255,255,0.1)]"
+                className="w-fit mt-4 px-8 py-4 rounded-full btn-metal font-heading font-bold text-sm flex items-center gap-3 group"
               >
                 <span>Start Your Project</span>
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
@@ -77,7 +90,7 @@ export default function OurApproachSection() {
 
                 {/* Floating stat badge 1 */}
                 <div className="absolute -top-8 -right-4 bg-[#111] border border-white/10 rounded-2xl px-6 py-5 flex flex-col shadow-2xl z-20 backdrop-blur-md">
-                  <span className="text-2xl md:text-4xl font-heading font-extrabold text-white">
+                  <span className="text-2xl md:text-4xl font-heading font-extrabold gradient-text">
                     99.9%
                   </span>
                   <span className="text-xs text-white/50 mt-1 uppercase tracking-wider font-semibold">Uptime SLA</span>

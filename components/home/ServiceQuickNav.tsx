@@ -53,10 +53,10 @@ export default function ServiceQuickNav() {
               className="group flex items-center gap-4 mx-6 md:mx-10 cursor-pointer"
             >
               {/* Subtle glass icon wrapper */}
-              <div className="relative flex items-center justify-center w-8 h-8 rounded-full bg-white/5 border border-white/10 group-hover:bg-white/10 group-hover:border-white/20 transition-all duration-300">
-                <IconRenderer 
-                  name={service.iconName} 
-                  className="w-3.5 h-3.5 text-text-muted group-hover:text-white transition-colors duration-300" 
+              <div className="relative flex items-center justify-center w-8 h-8 rounded-full bg-white/5 border border-white/10 group-hover:bg-white/10 group-hover:border-white/25 transition-all duration-300">
+                <IconRenderer
+                  name={service.iconName}
+                  className="w-3.5 h-3.5 text-text-muted group-hover:text-white transition-colors duration-300"
                 />
               </div>
               

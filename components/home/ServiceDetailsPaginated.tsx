@@ -33,17 +33,70 @@ const iconMap = {
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
+type Variant = "dark" | "light";
+
+/** Tone palettes — dark stays on the black canvas, light is the "paper" version. */
+const themes = {
+  dark: {
+    section: "bg-bg-primary focus-visible:ring-border-strong",
+    dotFrom: "rgba(255, 255, 255, 0.35)",
+    dotTo: "rgba(255, 255, 255, 0.1)",
+    dotGlow: "rgba(255, 255, 255, 0.15)",
+    wash: "bg-[radial-gradient(120%_120%_at_20%_0%,rgba(5,7,10,0.15)_0%,rgba(5,7,10,0.5)_60%,rgba(5,7,10,0.9)_100%)]",
+    eyebrow: "text-silver-mid",
+    heading: "text-text-primary",
+    body: "text-text-secondary",
+    iconBox: "border-white/12 bg-white/6",
+    icon: "text-silver-bright",
+    cta: "btn-metal",
+    panel: "border-white/10 bg-white/5",
+    panelDivider: "border-white/10",
+    pill: "border-white/20 bg-white/8 text-silver-bright",
+    check: "text-silver",
+    featureText: "text-text-primary",
+    navBtn: "border-white/10 bg-white/5 text-text-secondary hover:border-white/30 hover:text-white",
+    counter: "text-metal-light",
+    tickOn: "bg-silver-bright",
+    tickOff: "bg-white/25 hover:bg-white/50",
+  },
+  light: {
+    section: "bg-[#F4F6F8] border-y border-black/10 focus-visible:ring-black/20",
+    dotFrom: "rgba(10, 14, 18, 0.22)",
+    dotTo: "rgba(10, 14, 18, 0.07)",
+    dotGlow: "rgba(10, 14, 18, 0.1)",
+    wash: "bg-[radial-gradient(120%_120%_at_20%_0%,rgba(244,246,248,0.2)_0%,rgba(244,246,248,0.6)_60%,rgba(244,246,248,0.95)_100%)]",
+    eyebrow: "text-black/45",
+    heading: "text-[#0B0D10]",
+    body: "text-black/60",
+    iconBox: "border-black/10 bg-white shadow-[0_8px_20px_rgba(15,18,22,0.08)]",
+    icon: "text-[#15181B]",
+    cta: "bg-[#15181B] text-white shadow-[0_12px_28px_rgba(11,13,16,0.25)] transition-all hover:bg-black active:scale-[0.98]",
+    panel: "border-black/10 bg-white shadow-[0_24px_48px_-20px_rgba(15,18,22,0.15)]",
+    panelDivider: "border-black/10",
+    pill: "border-black/15 bg-[#15181B]/5 text-[#0B0D10]",
+    check: "text-[#15181B]",
+    featureText: "text-black/75",
+    navBtn: "border-black/10 bg-white text-black/50 hover:border-black/30 hover:text-black shadow-sm",
+    counter: "text-black/60",
+    tickOn: "bg-[#15181B]",
+    tickOff: "bg-black/20 hover:bg-black/40",
+  },
+} as const;
+
 interface ServiceDetailsPaginatedProps {
   modules?: ServiceModule[];
   initialSlug?: string;
   className?: string;
+  variant?: Variant;
 }
 
 export default function ServiceDetailsPaginated({
   modules = serviceModules,
   initialSlug,
   className = "",
+  variant = "dark",
 }: ServiceDetailsPaginatedProps) {
+  const t = themes[variant];
   const total = modules.length;
   const prefersReduced = useReducedMotion();
 
@@ -136,7 +189,7 @@ export default function ServiceDetailsPaginated({
       aria-label="Module deep dive"
       tabIndex={0}
       onKeyDown={onKeyDown}
-      className={`relative isolate overflow-hidden bg-bg-primary py-16 md:py-24 outline-none focus-visible:ring-1 focus-visible:ring-border-strong ${className}`}
+      className={`relative isolate overflow-hidden py-16 md:py-24 outline-none focus-visible:ring-1 ${t.section} ${className}`}
     >
       {/* Interactive dot-field background */}
       {isMounted && (
@@ -149,24 +202,24 @@ export default function ServiceDetailsPaginated({
             cursorRadius={340}
             sparkle={false}
             waveAmplitude={0}
-            gradientFrom="rgba(255, 255, 255, 0.35)"
-            gradientTo="rgba(255, 255, 255, 0.1)"
-            glowColor="rgba(255, 255, 255, 0.15)"
+            gradientFrom={t.dotFrom}
+            gradientTo={t.dotTo}
+            glowColor={t.dotGlow}
           />
         </div>
       )}
       
       {/* Legibility wash — reduced opacity to let the dots shine through better */}
-      <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(120%_120%_at_20%_0%,rgba(5,7,10,0.15)_0%,rgba(5,7,10,0.5)_60%,rgba(5,7,10,0.9)_100%)]" />
+      <div className={`pointer-events-none absolute inset-0 -z-10 ${t.wash}`} />
 
       <div className="mx-auto max-w-[1536px] px-4 md:px-8">
         {/* Header */}
         <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
           <div className="flex flex-col gap-2">
-            <span className="font-heading text-xs font-extrabold uppercase tracking-[0.2em] text-metal-mid">
+            <span className={`font-heading text-xs font-extrabold uppercase tracking-[0.2em] ${t.eyebrow}`}>
               Service Ecosystem
             </span>
-            <h2 className="font-heading text-2xl font-extrabold tracking-tight text-text-primary md:text-3xl">
+            <h2 className={`font-heading text-2xl font-extrabold tracking-tight md:text-3xl ${t.heading}`}>
               Module Deep Dive
             </h2>
           </div>
@@ -177,6 +230,7 @@ export default function ServiceDetailsPaginated({
               counter={counter}
               onPrev={() => paginate(-1)}
               onNext={() => paginate(1)}
+              t={t}
             />
           </div>
         </div>
@@ -200,17 +254,17 @@ export default function ServiceDetailsPaginated({
               {/* Left column */}
               <div className="flex flex-col">
                 <motion.div variants={childVariants} className="flex items-center gap-4">
-                  <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm">
-                    <Icon className="h-7 w-7 text-white" strokeWidth={1.5} />
+                  <div className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border backdrop-blur-sm ${t.iconBox}`}>
+                    <Icon className={`h-7 w-7 ${t.icon}`} strokeWidth={1.5} />
                   </div>
-                  <h3 className="font-heading text-2xl font-bold leading-tight tracking-tight text-text-primary md:text-3xl">
+                  <h3 className={`font-heading text-2xl font-bold leading-tight tracking-tight md:text-3xl ${t.heading}`}>
                     {activeModule.title}
                   </h3>
                 </motion.div>
 
                 <motion.div
                   variants={childVariants}
-                  className="mt-6 flex flex-col gap-4 text-sm leading-relaxed text-text-secondary md:text-base"
+                  className={`mt-6 flex flex-col gap-4 text-sm leading-relaxed md:text-base ${t.body}`}
                 >
                   {activeModule.fullDescription && activeModule.fullDescription.split("\n\n").map((para, i) => (
                     <p key={i}>{para}</p>
@@ -220,7 +274,7 @@ export default function ServiceDetailsPaginated({
                 <motion.div variants={childVariants} className="mt-8">
                   <Link
                     href={`/services/${activeModule.slug}`}
-                    className="group inline-flex w-fit items-center gap-2 rounded-full bg-white px-6 py-3 font-heading text-sm font-bold text-bg-primary shadow-[0_0_20px_rgba(255,255,255,0.2)] transition-all hover:brightness-90 active:scale-[0.98]"
+                    className={`group inline-flex w-fit items-center gap-2 rounded-full px-6 py-3 font-heading text-sm font-bold ${t.cta}`}
                   >
                     <span>Start this module</span>
                     <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -231,13 +285,13 @@ export default function ServiceDetailsPaginated({
               {/* Right column — Key Deliverables box */}
               <motion.div
                 variants={childVariants}
-                className="flex flex-col rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-md md:p-8"
+                className={`flex flex-col rounded-2xl border p-6 backdrop-blur-md md:p-8 ${t.panel}`}
               >
-                <div className="flex flex-col gap-4 border-b border-white/10 pb-6">
-                  <span className="font-heading text-xs font-extrabold uppercase tracking-[0.2em] text-metal-mid">
+                <div className={`flex flex-col gap-4 border-b pb-6 ${t.panelDivider}`}>
+                  <span className={`font-heading text-xs font-extrabold uppercase tracking-[0.2em] ${t.eyebrow}`}>
                     Key Deliverables
                   </span>
-                  <span className="w-fit rounded-full border border-white/20 bg-white/10 px-4 py-1.5 font-heading text-sm font-bold text-white">
+                  <span className={`w-fit rounded-full border px-4 py-1.5 font-heading text-sm font-bold ${t.pill}`}>
                     {activeModule.deliverable || "Core System Delivery"}
                   </span>
                 </div>
@@ -245,8 +299,8 @@ export default function ServiceDetailsPaginated({
                 <ul className="mt-6 flex flex-col gap-4">
                   {activeModule.keyFeatures && activeModule.keyFeatures.map((feature) => (
                     <li key={feature} className="flex items-start gap-3">
-                      <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-white" strokeWidth={1.75} />
-                      <span className="text-sm font-medium leading-snug text-text-primary md:text-[15px]">
+                      <CheckCircle2 className={`mt-0.5 h-5 w-5 shrink-0 ${t.check}`} strokeWidth={1.75} />
+                      <span className={`text-sm font-medium leading-snug md:text-[15px] ${t.featureText}`}>
                         {feature}
                       </span>
                     </li>
@@ -263,6 +317,7 @@ export default function ServiceDetailsPaginated({
             counter={counter}
             onPrev={() => paginate(-1)}
             onNext={() => paginate(1)}
+            t={t}
           />
         </div>
 
@@ -279,8 +334,8 @@ export default function ServiceDetailsPaginated({
                 onClick={() => goTo(i)}
                 className={`h-1.5 rounded-full transition-all duration-300 ${
                   active
-                    ? "w-8 bg-white"
-                    : "w-1.5 bg-white/30 hover:bg-white/50"
+                    ? `w-8 ${t.tickOn}`
+                    : `w-1.5 ${t.tickOff}`
                 }`}
               />
             );
@@ -295,10 +350,12 @@ function PaginationControls({
   counter,
   onPrev,
   onNext,
+  t,
 }: {
   counter: string;
   onPrev: () => void;
   onNext: () => void;
+  t: (typeof themes)[Variant];
 }) {
   return (
     <div className="flex items-center gap-4">
@@ -307,12 +364,12 @@ function PaginationControls({
         aria-label="Previous module"
         onClick={onPrev}
         whileTap={{ scale: 0.95 }}
-        className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 text-text-secondary backdrop-blur-md transition-colors hover:border-white/30 hover:text-white"
+        className={`flex h-11 w-11 items-center justify-center rounded-full border backdrop-blur-md transition-colors ${t.navBtn}`}
       >
         <ChevronLeft className="h-5 w-5" />
       </motion.button>
 
-      <span className="min-w-[72px] text-center font-heading text-base font-bold tabular-nums tracking-widest text-metal-light">
+      <span className={`min-w-[72px] text-center font-heading text-base font-bold tabular-nums tracking-widest ${t.counter}`}>
         {counter}
       </span>
 
@@ -321,7 +378,7 @@ function PaginationControls({
         aria-label="Next module"
         onClick={onNext}
         whileTap={{ scale: 0.95 }}
-        className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 text-text-secondary backdrop-blur-md transition-colors hover:border-white/30 hover:text-white"
+        className={`flex h-11 w-11 items-center justify-center rounded-full border backdrop-blur-md transition-colors ${t.navBtn}`}
       >
         <ChevronRight className="h-5 w-5" />
       </motion.button>

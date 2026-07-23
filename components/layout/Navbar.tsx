@@ -4,10 +4,9 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X, ChevronDown, Cpu, ArrowRight } from "lucide-react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { navItems, NavItem } from "@/lib/data/nav";
-
-import { KergixLogo } from "@/components/shared/KergixLogo";
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -47,8 +46,18 @@ export default function Navbar() {
       >
         <div className="max-w-7xl mx-auto px-4 md:px-8 flex items-center justify-between relative">
           {/* Logo link */}
-          <Link href="/" className="flex items-center" aria-label="Kergix home page">
-            <span className="font-heading font-bold text-xl text-text-primary tracking-tight">Kergix</span>
+          <Link href="/" className="flex items-center gap-2.5 group/logo" aria-label="Kergix home page">
+            <Image
+              src="/kergix-mark-mono.png"
+              alt=""
+              width={256}
+              height={235}
+              priority
+              className="h-9 w-auto select-none transition-transform duration-300 group-hover/logo:scale-105"
+            />
+            <span className="font-heading font-bold text-xl text-text-primary tracking-tight transition-colors group-hover/logo:text-metal-light">
+              Kergix
+            </span>
           </Link>
 
           {/* Desktop Navigation Link bar — centered */}
@@ -68,7 +77,7 @@ export default function Navbar() {
                     href={item.href}
                     className={`relative px-4 py-2 text-sm font-semibold flex items-center gap-1.5 transition-colors focus:outline-none ${isItemActive
                         ? "text-text-primary"
-                        : "text-text-secondary hover:text-text-primary"
+                        : "text-text-secondary hover:text-white"
                       }`}
                   >
                     <span>{item.label}</span>
@@ -77,7 +86,7 @@ export default function Navbar() {
                     )}
                     {/* Active underline indicator */}
                     {isItemActive && (
-                      <span className="absolute -bottom-0.5 left-4 right-4 h-0.5 rounded-full bg-text-primary" />
+                      <span className="absolute -bottom-0.5 left-4 right-4 h-0.5 rounded-full bg-silver-bright shadow-[0_0_8px_rgba(255,255,255,0.45)]" />
                     )}
                   </Link>
 
@@ -97,11 +106,11 @@ export default function Navbar() {
                               key={child.label}
                               href={child.href}
                               className={`p-3 rounded-lg flex flex-col gap-1 transition-all ${pathname === child.href
-                                  ? "bg-bg-secondary border border-white/10"
-                                  : "hover:bg-bg-secondary/70 border border-transparent"
+                                  ? "bg-white/8 border border-white/20"
+                                  : "hover:bg-white/5 hover:border-white/10 border border-transparent"
                                 }`}
                             >
-                              <span className="font-heading font-bold text-sm text-text-primary group-hover:text-text-secondary transition-colors">
+                              <span className="font-heading font-bold text-sm text-text-primary transition-colors">
                                 {child.label}
                               </span>
                               <span className="text-[11px] text-text-muted leading-snug">
@@ -140,7 +149,7 @@ export default function Navbar() {
           >
             {/* Ambient glows inside drawer */}
             <div className="absolute right-[-10%] top-[-10%] w-[300px] h-[300px] bg-white/5 rounded-full blur-[80px]" />
-            <div className="absolute left-[-10%] bottom-[-10%] w-[300px] h-[300px] bg-white/5 rounded-full blur-[80px]" />
+            <div className="absolute left-[-10%] bottom-[-10%] w-[300px] h-[300px] bg-white/4 rounded-full blur-[80px]" />
 
             <div className="flex flex-col gap-6 w-full max-w-lg mx-auto pb-10 z-10">
               {navItems.map((item) => {
@@ -197,7 +206,7 @@ export default function Navbar() {
               <Link
                 href="/contact"
                 onClick={() => setIsOpen(false)}
-                className="mt-6 w-full py-4 rounded-xl bg-white text-bg-primary font-heading font-bold text-base text-center flex items-center justify-center gap-2"
+                className="mt-6 w-full py-4 rounded-xl btn-metal font-heading font-bold text-base text-center flex items-center justify-center gap-2"
               >
                 <span>Get Started Now</span>
                 <ArrowRight className="w-4 h-4" />

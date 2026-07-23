@@ -95,7 +95,7 @@ export default function BuildingWithBestTools() {
             onClick={() => setActiveTab(cat)}
             className={`px-6 py-4 rounded-t-xl font-heading font-medium text-xs md:text-sm whitespace-nowrap transition-all border-b-2 focus:outline-none ${
               activeTab === cat
-                ? "border-white/80 text-white bg-white/5"
+                ? "border-silver-bright text-white bg-white/5"
                 : "border-transparent text-white/40 hover:text-white/70 hover:bg-white/5"
             }`}
           >

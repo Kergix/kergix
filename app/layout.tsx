@@ -52,7 +52,7 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${spaceGrotesk.variable} ${inter.variable} h-full antialiased dark`}
     >
-      <body suppressHydrationWarning className="min-h-full flex flex-col font-sans bg-bg-primary text-text-primary relative selection:bg-accent-cyan selection:text-bg-primary">
+      <body suppressHydrationWarning className="min-h-full flex flex-col font-sans bg-bg-primary text-text-primary relative selection:bg-metal-light selection:text-bg-primary">
         {/* Ambient background glows */}
         <div className="glow-bg-top-right" />
         <div className="glow-bg-bottom-left" />

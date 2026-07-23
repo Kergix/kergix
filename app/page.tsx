@@ -26,7 +26,7 @@ export default function HomePage() {
       <ServiceQuickNav />
 
       {/* 3. Paginated module deep-dive viewer */}
-      <ServiceDetailsPaginated />
+      <ServiceDetailsPaginated variant="light" />
 
       {/* 4. Industries strip */}
       <section className="py-24 px-4 md:px-8 bg-bg-primary border-y border-white/10 relative overflow-hidden isolate">
@@ -50,7 +50,7 @@ export default function HomePage() {
 
         <div className="max-w-7xl mx-auto flex flex-col gap-12 relative z-10">
           <div className="flex flex-col gap-4 text-center items-center">
-            <span className="text-white/60 font-heading text-xs font-extrabold uppercase tracking-widest">
+            <span className="text-silver-mid font-heading text-xs font-extrabold uppercase tracking-widest">
               Industries We Serve
             </span>
             <h2 className="text-3xl md:text-5xl font-heading font-extrabold text-white tracking-tight max-w-3xl leading-tight">
@@ -64,7 +64,7 @@ export default function HomePage() {
       </section>
 
       {/* 5. Why choose us */}
-      <WhyChooseUsSection />
+      <WhyChooseUsSection variant="light" />
 
 
 
@@ -90,7 +90,7 @@ export default function HomePage() {
 
         <div className="max-w-7xl mx-auto flex flex-col gap-12 relative z-10">
           <div className="flex flex-col gap-4 text-center items-center">
-            <span className="text-white/50 font-heading text-xs font-extrabold uppercase tracking-widest">
+            <span className="text-silver-mid font-heading text-xs font-extrabold uppercase tracking-widest">
               Building With The Best Tools
             </span>
             <h2 className="text-3xl md:text-5xl font-heading font-extrabold text-white tracking-tight max-w-3xl leading-tight">
@@ -102,14 +102,14 @@ export default function HomePage() {
       </section>
 
       {/* 9. Our approach */}
-      <OurApproachSection />
+      <OurApproachSection variant="light" />
 
       {/* 10. Service capability list (all 8) */}
       <section className="py-24 px-4 md:px-8 bg-bg-primary relative overflow-hidden border-b border-white/10 group">
-        <SplashCursor COLOR="#888888" RAINBOW_MODE={false} />
+        <SplashCursor COLOR="#8A8F94" RAINBOW_MODE={false} />
         <div className="max-w-7xl mx-auto flex flex-col gap-16 relative z-10 pointer-events-none">
           <div className="flex flex-col gap-4 text-center items-center pointer-events-auto">
-            <span className="text-white/50 font-heading text-xs font-extrabold uppercase tracking-widest">
+            <span className="text-silver-mid font-heading text-xs font-extrabold uppercase tracking-widest">
               Core Capabilities
             </span>
             <h2 className="text-3xl md:text-5xl font-heading font-extrabold text-white tracking-tight max-w-3xl leading-tight">

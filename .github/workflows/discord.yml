@@ -11,8 +11,10 @@ jobs:
 
     steps:
       - name: Verify webhook secret
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
         run: |
-          if [ -z "${{ secrets.DISCORD_WEBHOOK }}" ]; then
+          if [ -z "$DISCORD_WEBHOOK" ]; then
             echo "❌ DISCORD_WEBHOOK secret is EMPTY or unavailable."
             exit 1
           else
@@ -20,14 +22,33 @@ jobs:
           fi
 
       - name: Send Discord Notification
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+          REPO: ${{ github.repository }}
+          AUTHOR: ${{ github.actor }}
+          BRANCH: ${{ github.ref_name }}
+          COMMIT_MESSAGE: ${{ github.event.head_commit.message }}
+          COMMIT_SHA: ${{ github.sha }}
         run: |
+          set -euo pipefail
+
+          # First line of the commit message only, capped at 200 chars
+          SUMMARY=$(printf '%s' "$COMMIT_MESSAGE" | head -n 1 | cut -c1-200)
+
+          # jq handles all escaping (quotes, newlines, unicode) and emits valid JSON
+          payload=$(jq -nc \
+            --arg repo "$REPO" \
+            --arg author "$AUTHOR" \
+            --arg branch "$BRANCH" \
+            --arg commit "$SUMMARY" \
+            --arg url "https://github.com/$REPO/commit/$COMMIT_SHA" \
+            '{content: "🚀 **New Push**\n\n📦 Repository: \($repo)\n👤 Author: \($author)\n🌿 Branch: \($branch)\n📝 Commit: \($commit)\n🔗 \($url)"}')
+
           RESPONSE=$(curl -s -o /tmp/response.txt -w "%{http_code}" \
             -H "Content-Type: application/json" \
             -X POST \
-            -d '{
-              "content": "🚀 **New Push**\n\n📦 Repository: ${{ github.repository }}\n👤 Author: ${{ github.actor }}\n🌿 Branch: ${{ github.ref_name }}\n📝 Commit: ${{ github.event.head_commit.message }}\n🔗 https://github.com/${{ github.repository }}/commit/${{ github.sha }}"
-            }' \
-            "${{ secrets.DISCORD_WEBHOOK }}")
+            -d "$payload" \
+            "$DISCORD_WEBHOOK")
 
           echo "HTTP Status: $RESPONSE"
           cat /tmp/response.txt

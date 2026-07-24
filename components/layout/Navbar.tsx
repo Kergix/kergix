@@ -48,10 +48,10 @@ export default function Navbar() {
           {/* Logo link */}
           <Link href="/" className="flex items-center gap-2.5 group/logo" aria-label="Kergix home page">
             <Image
-              src="/kergix-mark-mono.png"
+              src="/kergix-logo-mark.png"
               alt=""
-              width={256}
-              height={235}
+              width={239}
+              height={229}
               priority
               className="h-9 w-auto select-none transition-transform duration-300 group-hover/logo:scale-105"
             />

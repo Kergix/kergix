@@ -57,7 +57,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-6 gap-10 lg:gap-12 pb-16">
           {/* Brand */}
           <div className="col-span-1 sm:col-span-2 md:col-span-2 flex flex-col gap-5">
-            <Link href="/" aria-label="Kergix home" className="w-fit -mt-6 -ml-3">
+            <Link href="/" aria-label="Kergix home" className="w-fit">
               <KergixFooterLogo />
             </Link>
             <p className="text-white/50 text-sm leading-relaxed max-w-sm">
